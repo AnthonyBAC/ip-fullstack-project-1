@@ -1,4 +1,4 @@
-package mitrack_proyecto.model;
+package mitrack_proyecto.mitrack.model;
 
 import java.time.LocalTime;
 import lombok.AllArgsConstructor;
