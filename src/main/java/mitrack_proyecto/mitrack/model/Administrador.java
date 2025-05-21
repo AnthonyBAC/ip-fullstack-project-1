@@ -1,4 +1,4 @@
-package mitrack_proyecto.model;
+package mitrack_proyecto.mitrack.model;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

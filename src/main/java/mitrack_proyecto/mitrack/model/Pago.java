@@ -1,4 +1,4 @@
-package mitrack_proyecto.model;
+package mitrack_proyecto.mitrack.model;
 
 import java.time.LocalDate;
 
@@ -11,7 +11,7 @@ import lombok.Data;
 @NoArgsConstructor
 
 public class Pago {
-    
+
     private Double monto;
     private LocalDate fechaPago;
     private String tipo;
