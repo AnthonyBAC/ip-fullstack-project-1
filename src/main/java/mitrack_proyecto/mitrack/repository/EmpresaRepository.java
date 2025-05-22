@@ -13,14 +13,14 @@ public class EmpresaRepository {
     private List<Empresa> listaEmpresas = new ArrayList<>();
 
     // Devuelve lista de las empresas de la variable listaEmpresas
-    public List<Empresa> obtenerEmpresas() {
+    public List<Empresa> obtener_empresas() {
         return listaEmpresas;
     }
 
     // Buscar empresa por ID
     // Recorre la lista de empresas de modelo Empresa, y hace una comparacion entre
     // el id de la empresa y el id que se le pasa por parametro
-    public Empresa buscarPorId(int id_emp) {
+    public Empresa buscar_por_id(int id_emp) {
         for (Empresa empresa : listaEmpresas) {
             if (empresa.getId_emp() == id_emp) {
                 return empresa;
@@ -32,7 +32,7 @@ public class EmpresaRepository {
     // Buscar por nombre
     // Recorre la lista de empresas de modelo Empresa, y hace una comparacion entre
     // el nombre de la empresa y el nombre que se le pasa por parametro
-    public Empresa buscarPorNombre(String nombre_emp) {
+    public Empresa buscar_por_nombre(String nombre_emp) {
         for (Empresa empresa : listaEmpresas) {
             if (empresa.getNombre_emp().equals(nombre_emp)) {
                 return empresa;
@@ -44,7 +44,7 @@ public class EmpresaRepository {
     // Guardar empresa
     // Crea una variable empresa y la agrega a la lista de empresas, utilizando
     // la entidad Empresa del model Empresa
-    public Empresa guardarEmpresa(Empresa empresa) {
+    public Empresa guardar_empresa(Empresa empresa) {
         listaEmpresas.add(empresa);
         return empresa;
     }
@@ -53,7 +53,7 @@ public class EmpresaRepository {
     // Recorre la lista de empresas de modelo Empresa, y hace una comparacion entre
     // el id de la empresa y el id que se le pasa por parametro
     // Si encuentra la empresa, la elimina de la lista
-    public void eliminarEmpresa(int id_emp) {
+    public void eliminar_empresa(int id_emp) {
         listaEmpresas.removeIf(empresa -> empresa.getId_emp() == id_emp);
     }
 
