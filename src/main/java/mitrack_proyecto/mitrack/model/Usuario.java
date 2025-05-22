@@ -26,12 +26,12 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_usuario;
-    private String nombre;
+    private String nombre_usr;
     @Email
     @NotBlank
-    private String email;
+    private String email_usr;
     @NotBlank
-    private String contraseña;
+    private String contraseña_usr;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_rol")
     private Rol rol;

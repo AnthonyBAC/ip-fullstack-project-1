@@ -7,8 +7,11 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Data;
 
+//Genera automaticamente getters y setters toStringetc() ahorro.
 @Data
+// Genera un constructor con todos los campos como parametro
 @AllArgsConstructor
+// Genera un constructor vacio (sin argumentos)
 @NoArgsConstructor
 
 public class Cliente {
