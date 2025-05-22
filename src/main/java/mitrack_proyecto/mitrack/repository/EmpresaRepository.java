@@ -63,14 +63,20 @@ public class EmpresaRepository {
     // el id de la empresa y el id que se le pasa por parametro
     // Si encuentra la empresa, la modifica
     public Empresa actualizarEmpresa(Empresa empresa) {
-        int id = 0;
-        int idPosicion = 0;
+        Long id = 0L;
+        int idPosicion = -1;
 
         for (int i = 0; i < listaEmpresas.size(); i++) {
-            if (listaEmpresas.get(i).getId_emp() == empresa.getId_emp()) {
+            if (empresa.getId_emp() != null &&
+                    empresa.getId_emp().equals(listaEmpresas.get(i).getId_emp())) {
                 id = empresa.getId_emp();
                 idPosicion = i;
+                break;
             }
+        }
+
+        if (idPosicion == -1) {
+            throw new RuntimeException("Empresa no encontrada");
         }
 
         Empresa empresa1 = new Empresa();

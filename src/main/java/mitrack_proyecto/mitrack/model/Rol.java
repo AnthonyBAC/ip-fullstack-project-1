@@ -1,8 +1,10 @@
 package mitrack_proyecto.mitrack.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Data;
@@ -13,14 +15,16 @@ import lombok.Data;
 @AllArgsConstructor
 // Genera un constructor vacio (sin argumentos)
 @NoArgsConstructor
-public class Empresa {
+@Entity
+@Table(name = "rol")
+public class Rol {
 
+    // Define clave primaria
+    // Se indica que esta id se generara de manera automatica de forma
+    // auto-incremental
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_emp;
-    private String nombre_emp;
-    private int rut_emp;
-    private String dv_emp;
-    private String dir_emp;
+    private Long id_rol;
+    private String nombre_rol;
 
 }
