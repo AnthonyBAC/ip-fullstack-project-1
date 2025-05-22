@@ -58,6 +58,7 @@ public class EmpresaRepository {
     }
 
     // Modificar empresa
+    // Busca la empresa por ID y la modifica
     // Recorre la lista de empresas de modelo Empresa, y hace una comparacion entre
     // el id de la empresa y el id que se le pasa por parametro
     // Si encuentra la empresa, la modifica

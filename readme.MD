@@ -52,13 +52,23 @@ Nombre Controller: UsuarioController
 
 ### Controller
 
-Nombre Controller: ClienteController
+EmpresaController api/v1/empresas
 
-- POST /empresa
-- GET /empresa/{id_emp}
-- PUT /empresa/{id_emp}
-- DELETE /empresa/{id_emp}
-- GET /empresa/clientes/{id_cli}
+- GET /empresas: listar todas las empresas
+- GET /empresas/{id_emp}: obtener una empresa por ID
+- POST /empresas: crear empresa
+- PUT /empresas/{id_emp}: actualizar empresa
+- DELETE /empresas/{id_emp}: eliminar empresa
+
+ClienteController api/v1/empresas/{id_emp}/clientes
+
+(Clientes anidados bajo una empresa)
+
+- GET /empresas/{id_emp}/clientes: obtener todos los clientes de una empresa
+- GET /empresas/{id_emp}/clientes/{id_cli}: obtener cliente específico de esa empresa
+- POST /empresas/{id_emp}/clientes: crear cliente para una empresa
+- PUT /empresas/{id_emp}/clientes/{id_cli}: actualizar cliente
+- DELETE /empresas/{id_emp}/clientes/{id_cli}: eliminar cliente
 
 ---
 
@@ -117,7 +127,7 @@ Nombre Controller: GuiaClienteController
 
 ### Controller
 
-Nombre Controller: RutaController
+RutaController api/v1/rutas
 
 - POST /rutas
 - GET /rutas/{id_ruta}
@@ -146,7 +156,7 @@ Nombre Controller: RutaController
 
 ### Controller
 
-Nombre Controller: gestionarFlotaController
+VehiculoController api/v1/vehiculos
 
 - POST /vehiculos
 - GET /vehiculos/{id}
@@ -173,7 +183,7 @@ Nombre Controller: gestionarFlotaController
 
 ### Controller
 
-Nombre Controller: iniciarViajeController
+iniciarViajeController api/v1/viaje/iniciar/{id_conductor}
 
 - POST /viaje/iniciar/{id_conductor}
 
@@ -197,7 +207,7 @@ Nombre Controller: iniciarViajeController
 
 ### Controller
 
-Nombre Controller: terminarViajeController
+terminarViajeController api/v1/viaje/terminar/{id_conductor}
 
 - POST /viaje/terminar/{id_conductor}
 
@@ -221,7 +231,7 @@ Nombre Controller: terminarViajeController
 
 ### Controller
 
-Nombre Controller: estadoCargaController
+estadoCargaController api/v1/cargas/{id}/cargaentregada
 
 - POST /cargas/{id}/cargaentregada
 
@@ -247,7 +257,7 @@ Nombre Controller: estadoCargaController
 
 ### Controller
 
-Nombre Controller: NotificacionController
+NotificacionController api/v1/notificaciones
 
 - POST /notificaciones
 - GET /notificaciones/{id_notificacion}
@@ -274,7 +284,7 @@ Nombre Controller: NotificacionController
 
 ### Controller
 
-Nombre Controller: SistemaController
+SistemaController api/v1/reportes
 
 - POST /reportes
 - GET /reportes/{id_reporte}
