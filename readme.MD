@@ -6,9 +6,9 @@
 
 ### Model
 
-Usuario (id, nombre, email, contraseña, rol_id)
-Rol (id, nombre)
-Permiso (id, tipo, descripcion)
+- Usuario (id, nombre, email, contraseña, rol_id)
+- Rol (id, nombre)
+- Permiso (id, tipo, descripcion)
 
 ### Repository
 
@@ -39,8 +39,8 @@ Nombre Controller: UsuarioController
 
 ### Model
 
-Cliente (id, nombre, apellido, run, dv, origen, destino)
-Empresa (id, nombre, rut, dirección)
+- Cliente (id, nombre, apellido, run, dv, origen, destino)
+- Empresa (id, nombre, rut, dirección)
 
 ### Repository
 
@@ -70,9 +70,9 @@ Nombre Controller: ClienteController
 
 ### Model
 
-Carga (id, descripcion, peso, volumen, estado)
-GuiaCliente (id, cliente_id, ruta_id, carga_id, pago_recibido, fecha_envio)
-EstadoCarga (id, estado)
+- Carga (id, descripcion, peso, volumen, estado)
+- GuiaCliente (id, cliente_id, ruta_id, carga_id, pago_recibido, fecha_envio)
+- EstadoCarga (id, estado)
 
 ### Repository
 
@@ -106,9 +106,9 @@ Nombre Controller: GuiaClienteController
 
 ### Model
 
-Ruta (id, origen, destino, distancia_km, tiempo_estimado)
-Parada (id, ruta_id, ubicación, orden)
-TarifaRuta (id, ruta_id, precio)
+- Ruta (id, origen, destino, distancia_km, tiempo_estimado)
+- Parada (id, ruta_id, ubicación, orden)
+- TarifaRuta (id, ruta_id, precio)
 
 ### Repository
 
@@ -138,7 +138,7 @@ Nombre Controller: RutaController
 
 ### Model
 
-Empresa (id, nombre_empresa, rut_empresa, direccion_empresa)
+- Empresa (id, nombre_empresa, rut_empresa, direccion_empresa)
 
 ### Repository
 
@@ -165,7 +165,7 @@ Nombre Controller: EmpresaController
 
 ### Model
 
-Administrador (id, nombre, telefono)
+- Administrador (id, nombre, telefono)
 
 ### Repository
 
@@ -192,11 +192,11 @@ Nombre Controller: AdministradorController
 
 ### Model
 
-Usuario, Rol, Token
+- Usuario, Rol, Token
 
 ### Repository
 
-UsuarioRepository, TokenRepository
+- UsuarioRepository, TokenRepository
 
 ### Service
 
@@ -217,12 +217,12 @@ Nombre Controller: AuthController
 
 ### Model
 
-ReporteRuta (id, conductor_id, ruta_id, fecha, observaciones)
-EstadoViaje (id, estado, hora_inicio, hora_termino)
+- ReporteRuta (id, conductor_id, ruta_id, fecha, observaciones)
+- EstadoViaje (id, estado, hora_inicio, hora_termino)
 
 ### Repository
 
-ReporteRutaRepository
+- ReporteRutaRepository
 
 ### Service
 
@@ -246,12 +246,12 @@ Nombre Controller: ConductorActionsController
 
 ### Model
 
-Vehiculo (id, patente, tipo, capacidad, estado)
-AsignacionVehiculo (id, conductor_id, vehiculo_id, fecha_asignacion)
+- Vehiculo (id, patente, tipo, capacidad, estado)
+- AsignacionVehiculo (id, conductor_id, vehiculo_id, fecha_asignacion)
 
 ### Repository
 
-VehiculoRepository, AsignacionVehiculoRepository
+- VehiculoRepository, AsignacionVehiculoRepository
 
 ### Service
 
@@ -274,12 +274,12 @@ Nombre Controller: VehiculoController
 
 ### Model
 
-Notificacion (id, tipo, mensaje, usuario_id, leido)
-Informe (id, tipo, fecha, contenido, generado_por)
+- Notificacion (id, tipo, mensaje, usuario_id, leido)
+- Informe (id, tipo, fecha, contenido, generado_por)
 
 ### Repository
 
-NotificacionRepository, InformeRepository
+- NotificacionRepository, InformeRepository
 
 ### Service
 
