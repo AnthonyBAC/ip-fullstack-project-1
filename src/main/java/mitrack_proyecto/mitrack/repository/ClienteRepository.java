@@ -34,7 +34,7 @@ public class ClienteRepository {
     }
 
     //BUSCAR POR NOMBRE
-    public Libro buscarPorAutor(String autor) {
+    public Cliente buscarPorAutor(String autor) {
         for (Libro libro : listaLibros) {
             if (libro.getAutor().equals(autor)) {
                 return libro;
