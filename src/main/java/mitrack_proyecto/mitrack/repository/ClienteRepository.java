@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 public class ClienteRepository {
     //CREACION DE LISTA PARA CLIENTES
     private List<Cliente> lista_clientes = new ArrayList<>();
+
     //DATOS DE CLIENTES
     public ClienteRepository() {
         lista_clientes.add(new Cliente(1, "Juan", "López", 99999999, "9", 912345678, "", ""));
@@ -65,6 +66,7 @@ public class ClienteRepository {
         int id = 0;
         int idPosicion = 0;
 
+        //REPASO DE LA LISTA COMENZANDO DESDE LA POSICION 0 EN ID_CLIENTE
         for (int i = 0; i < lista_clientes.size(); i++) {
             if (lista_clientes.get(i).getId_cli() == cli.getId_cli()) {
                 id = cli.getId_cli();
@@ -72,6 +74,7 @@ public class ClienteRepository {
             }
         }
 
+        //SETEA DATOS NUEVOS A UNA LISTA NUEVA
         Cliente cliente1 = new Cliente();
         cliente1.setId_cli(id);
         cliente1.setNombre_cli(cli.getNombre_cli());
