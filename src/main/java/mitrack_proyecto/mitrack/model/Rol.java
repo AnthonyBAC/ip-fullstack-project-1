@@ -1,6 +1,5 @@
 package mitrack_proyecto.mitrack.model;
 
-import mitrack_proyecto.mitrack.model.RolNombre;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
