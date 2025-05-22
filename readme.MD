@@ -37,13 +37,13 @@ Nombre Controller: UsuarioController
 
 ### Model
 
-- Empresa (id_emp, nombre_emp, rut_emp, dir_emp)
-- Cliente (id_cli, nombre_cli, apellido_cli, run_cli, dv_cli, origen_cli, destino_cli)
+- Empresa (id_emp, nombre_emp, rut_emp, dv_emp, dir_emp)
+- Cliente (id_cli, nombre_cli, apellido_cli, run_cli, dv_cli, origen_cli, destino_cli, tel_cli)
 
 ### Repository
 
-- ClienteRepository
-- EmpresaRepository
+- ClienteRepository CRUD
+- EmpresaRepository CRUD
 
 ### Service
 
