@@ -1,6 +1,5 @@
 package mitrack_proyecto.mitrack.repository;
 
-import mitrack_proyecto.mitrack.model.RolNombre;
 import mitrack_proyecto.mitrack.model.Usuario;
 import org.springframework.stereotype.Repository;
 
