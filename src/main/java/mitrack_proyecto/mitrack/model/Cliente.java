@@ -10,9 +10,12 @@ import lombok.Data;
 
 public class Cliente {
 
-    private String nombreCli;
-    private int rutCli;
-    private String dvrunCli;
-    private int telefonoCli;
-    private String emailCli;
+    private int id_cli;
+    private String nombre_cli;
+    private String apellido_cli;
+    private int run_cli;
+    private String dv_cli;
+    private int tel_cli;
+    private String origen_cli;
+    private String destino_cli;
 }
