@@ -1,6 +1,9 @@
 package mitrack_proyecto.mitrack.model;
 
+import mitrack_proyecto.mitrack.model.RolNombre;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +28,7 @@ public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_rol;
-    private String nombre_rol;
+    @Enumerated(EnumType.STRING)
+    private RolNombre nombre_rol;
 
 }
