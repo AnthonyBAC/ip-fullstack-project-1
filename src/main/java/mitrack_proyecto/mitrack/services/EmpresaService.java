@@ -8,38 +8,35 @@ import java.util.List;
 
 @Service
 public class EmpresaService {
-    // Inyeccion de dependencia
+
+    // Inyeccion de repositorio para utilizar sus metodos
     @Autowired
-    // Inyeccion de dependencia
-    private EmpresaRepository empresaRepository;
+    private EmpresaRepository empresa_repository;
 
-    // Obtiene todas las empresas llamando al repository
+    // Llamando metodos desde repository
     public List<Empresa> obtenerEmpresas() {
-        return empresaRepository.obtenerEmpresas();
+        return empresa_repository.obtenerEmpresas();
     }
 
-    // Busca una empresa por su ID llamando al repository
     public Empresa buscarPorId(int id_emp) {
-        return empresaRepository.buscarPorId(id_emp);
+        return empresa_repository.buscarPorId(id_emp);
     }
 
-    // Busca una empresa por su nombre llamando al repository
     public Empresa buscarPorNombre(String nombre_emp) {
-        return empresaRepository.buscarPorNombre(nombre_emp);
+        return empresa_repository.buscarPorNombre(nombre_emp);
     }
 
-    // Guarda una empresa llamando al repository
     public Empresa guardarEmpresa(Empresa empresa) {
-        return empresaRepository.guardarEmpresa(empresa);
+        return empresa_repository.guardarEmpresa(empresa);
     }
 
-    // Elimina una empresa llamando al repository
-    public void eliminarEmpresa(int id_emp) {
-        empresaRepository.eliminarEmpresa(id_emp);
+    public String eliminarEmpresaPorId(int id_emp) {
+        empresa_repository.eliminarEmpresaPorId(id_emp);
+        return "Empresa eliminada existosamente";
     }
 
-    // Actualiza una empresa llamando al repository
-    public Empresa actualizar_empresa(Empresa empresa) {
-        return empresaRepository.actualizar_empresa(empresa);
+    public Empresa actualizarEmpresa(Empresa empresa) {
+        return empresa_repository.actualizarEmpresa(empresa);
     }
+
 }

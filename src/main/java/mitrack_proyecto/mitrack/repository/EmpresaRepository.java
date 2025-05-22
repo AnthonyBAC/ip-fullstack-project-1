@@ -53,7 +53,7 @@ public class EmpresaRepository {
     // Recorre la lista de empresas de modelo Empresa, y hace una comparacion entre
     // el id de la empresa y el id que se le pasa por parametro
     // Si encuentra la empresa, la elimina de la lista
-    public void eliminarEmpresa(int id_emp) {
+    public void eliminarEmpresaPorId(int id_emp) {
         listaEmpresas.removeIf(empresa -> empresa.getId_emp() == id_emp);
     }
 
@@ -62,7 +62,7 @@ public class EmpresaRepository {
     // Recorre la lista de empresas de modelo Empresa, y hace una comparacion entre
     // el id de la empresa y el id que se le pasa por parametro
     // Si encuentra la empresa, la modifica
-    public Empresa actualizar_empresa(Empresa empresa) {
+    public Empresa actualizarEmpresa(Empresa empresa) {
         int id = 0;
         int idPosicion = 0;
 
