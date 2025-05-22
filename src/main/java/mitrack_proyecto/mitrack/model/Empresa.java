@@ -7,14 +7,17 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Data;
 
+//Genera automaticamente getters y setters toStringetc() ahorro.
 @Data
+// Genera un constructor con todos los campos como parametro
 @AllArgsConstructor
+// Genera un constructor vacio (sin argumentos)
 @NoArgsConstructor
 public class Empresa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_emp;
+    private Long id_emp;
     private String nombre_emp;
     private int rut_emp;
     private String dv_emp;

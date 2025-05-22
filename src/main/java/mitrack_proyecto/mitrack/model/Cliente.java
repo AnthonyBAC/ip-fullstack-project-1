@@ -13,6 +13,9 @@ import lombok.Data;
 
 public class Cliente {
 
+    // Define clave primaria
+    // Se indica que esta id se generara de manera automatica de forma
+    // auto-incremental
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_cli;
