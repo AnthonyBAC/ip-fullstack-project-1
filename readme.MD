@@ -23,12 +23,13 @@ AuthService (login, validación, generación de tokens)
 
 ### Controller
 
-UsuarioController
-POST /usuarios
-GET /usuarios/{id}
-PUT /usuarios/{id}
-DELETE /usuarios/{id}
-GET /usuarios?rol=ADMIN
+Nombre Controller: UsuarioController
+
+- POST /usuarios
+- GET /usuarios/{id}
+- PUT /usuarios/{id}
+- DELETE /usuarios/{id}
+- GET /usuarios?rol=ADMIN
 
 ---
 
@@ -54,11 +55,12 @@ EmpresaService
 ### Controller
 
 Nombre Controller: ClienteController
-POST /clientes
-GET /clientes/{id}
-PUT /clientes/{id}
-DELETE /clientes/{id}
-GET /clientes/empresa/{id}
+
+- POST /clientes
+- GET /clientes/{id}
+- PUT /clientes/{id}
+- DELETE /clientes/{id}
+- GET /clientes/empresa/{id}
 
 ---
 
@@ -85,13 +87,16 @@ GuiaClienteService (crearGuia, consultarGuia)
 ### Controller
 
 Nombre Controller: CargaController
-POST /cargas
-GET /cargas/{id}
-PUT /cargas/{id}
-DELETE /cargas/{id}
-GuiaClienteController
-POST /guias-cliente
-GET /guias-cliente/{id}
+
+- POST /cargas
+- GET /cargas/{id}
+- PUT /cargas/{id}
+- DELETE /cargas/{id}
+
+Nombre Controller: GuiaClienteController
+
+- POST /guias-cliente
+- GET /guias-cliente/{id}
 
 ---
 
@@ -118,11 +123,12 @@ RutaService (crearRuta, calcularTarifa, actualizarRuta, eliminarRuta)
 ### Controller
 
 Nombre Controller: RutaController
-POST /rutas
-GET /rutas/{id}
-PUT /rutas/{id}
-DELETE /rutas/{id}
-POST /rutas/calcular-costo
+
+- POST /rutas
+- GET /rutas/{id}
+- PUT /rutas/{id}
+- DELETE /rutas/{id}
+- POST /rutas/calcular-costo
 
 ---
 
@@ -145,10 +151,11 @@ EmpresaService (crear, editar, eliminar empresa)
 ### Controller
 
 Nombre Controller: EmpresaController
-POST /empresa
-GET /empresa/{id}
-PUT /empresa/{id}
-DELETE /empresa/{id}
+
+- POST /empresa
+- GET /empresa/{id}
+- PUT /empresa/{id}
+- DELETE /empresa/{id}
 
 ---
 
@@ -171,10 +178,11 @@ AdministradorService (crear, actualizar, leer, eliminar)
 ### Controller
 
 Nombre Controller: AdministradorController
-POST /admin
-GET /admin/{id}
-PUT /admin/{id}
-DELETE /admin/{id}
+
+- POST /admin
+- GET /admin/{id}
+- PUT /admin/{id}
+- DELETE /admin/{id}
 
 ---
 
@@ -197,8 +205,9 @@ AuthService (login, logout, refreshToken)
 ### Controller
 
 Nombre Controller: AuthController
-POST /auth/login
-POST /auth/logout
+
+- POST /auth/login
+- POST /auth/logout
 
 ---
 
@@ -223,10 +232,11 @@ ReporteRutaService
 ### Controller
 
 Nombre Controller: ConductorActionsController
-POST /viaje/iniciar
-POST /viaje/terminar
-POST /producto/entregado
-POST /reporte/generar
+
+- POST /viaje/iniciar
+- POST /viaje/terminar
+- POST /producto/entregado
+- POST /reporte/generar
 
 ---
 
@@ -250,10 +260,11 @@ VehiculoService, AsignacionVehiculoService
 ### Controller
 
 Nombre Controller: VehiculoController
-POST /vehiculos
-GET /vehiculos/{id}
-PUT /vehiculos/{id}
-DELETE /vehiculos/{id}
+
+- POST /vehiculos
+- GET /vehiculos/{id}
+- PUT /vehiculos/{id}
+- DELETE /vehiculos/{id}
 
 ---
 
@@ -277,6 +288,7 @@ NotificacionService, InformeService
 ### Controller
 
 Nombre Controller: SistemaController
-POST /notificaciones
-POST /informes
-GET /informes/{id}
+
+- POST /notificaciones
+- POST /informes
+- GET /informes/{id}
