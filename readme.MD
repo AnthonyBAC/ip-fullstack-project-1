@@ -6,15 +6,13 @@
 
 ### Model
 
-- Usuario (id, nombre, email, contraseña, rol_id)
-- Rol (id, nombre)
-- Permiso (id, tipo, descripcion)
+- Usuario (id_usuario, nombre, email, contraseña, id_rol)
+- Rol (id_rol, nombre_rol)
 
 ### Repository
 
 - UsuarioRepository
 - RolRepository
-- PermisoRepository
 
 ### Service
 
@@ -39,8 +37,8 @@ Nombre Controller: UsuarioController
 
 ### Model
 
-- Cliente (id, nombre, apellido, run, dv, origen, destino)
-- Empresa (id, nombre, rut, dirección)
+- Empresa (id_emp, nombre_emp, rut_emp, dir_emp)
+- Cliente (id_cli, nombre_cli, apellido_cli, run_cli, dv_cli, origen_cli, destino_cli)
 
 ### Repository
 
@@ -49,18 +47,18 @@ Nombre Controller: UsuarioController
 
 ### Service
 
-- ClienteService (CRUD + obtenerClientesPorEmpresa)
-- EmpresaService
+- EmpresaService (CRUD + obtenerClientesPorEmpresa)
+- ClienteService
 
 ### Controller
 
 Nombre Controller: ClienteController
 
-- POST /clientes
-- GET /clientes/{id}
-- PUT /clientes/{id}
-- DELETE /clientes/{id}
-- GET /clientes/empresa/{id}
+- POST /empresa
+- GET /empresa/{id_emp}
+- PUT /empresa/{id_emp}
+- DELETE /empresa/{id_emp}
+- GET /empresa/clientes/{id_cli}
 
 ---
 
@@ -70,9 +68,8 @@ Nombre Controller: ClienteController
 
 ### Model
 
-- Carga (id, descripcion, peso, volumen, estado)
-- GuiaCliente (id, cliente_id, ruta_id, carga_id, pago_recibido, fecha_envio)
-- EstadoCarga (id, estado)
+- Carga (id, descripcion)
+- GuiaCliente (id, id_cliente, id_ruta, id_carga)
 
 ### Repository
 
@@ -89,14 +86,14 @@ Nombre Controller: ClienteController
 Nombre Controller: CargaController
 
 - POST /cargas
-- GET /cargas/{id}
-- PUT /cargas/{id}
-- DELETE /cargas/{id}
+- GET /cargas/{id_carga}
+- PUT /cargas/{id_carga}
+- DELETE /cargas/{id_carga}
 
 Nombre Controller: GuiaClienteController
 
 - POST /guias-cliente
-- GET /guias-cliente/{id}
+- GET /guias-cliente/{id_guia}
 
 ---
 
@@ -106,148 +103,37 @@ Nombre Controller: GuiaClienteController
 
 ### Model
 
-- Ruta (id, origen, destino, distancia_km, tiempo_estimado)
-- Parada (id, ruta_id, ubicación, orden)
-- TarifaRuta (id, ruta_id, precio)
+- Ruta (origen, destino, distancia_km, tiempo_estimado)
+- Parada (id_ruta, ubicación, orden)
 
 ### Repository
 
 - RutaRepository
 - ParadaRepository
-- TarifaRutaRepository
 
 ### Service
 
-- RutaService (crearRuta, calcularTarifa, actualizarRuta, eliminarRuta)
+- RutaService (crearRuta, actualizarRuta, eliminarRuta)
 
 ### Controller
 
 Nombre Controller: RutaController
 
 - POST /rutas
-- GET /rutas/{id}
-- PUT /rutas/{id}
-- DELETE /rutas/{id}
-- POST /rutas/calcular-costo
+- GET /rutas/{id_ruta}
+- PUT /rutas/{id_ruta}
+- DELETE /rutas/{id_ruta}
 
 ---
 
-## 5. gestionarEmpresa()
+## 5. gestionarFlota()
 
-**Responsabilidad**: Información y configuración de la empresa.
-
-### Model
-
-- Empresa (id, nombre_empresa, rut_empresa, direccion_empresa)
-
-### Repository
-
-- EmpresaRepository
-
-### Service
-
-- EmpresaService (crear, editar, eliminar empresa)
-
-### Controller
-
-Nombre Controller: EmpresaController
-
-- POST /empresa
-- GET /empresa/{id}
-- PUT /empresa/{id}
-- DELETE /empresa/{id}
-
----
-
-## 6. gestionarUsuarios() (ADMIN)
-
-**Responsabilidad**: CRUD de usuarios internos del sistema (Administrador, Coordinador, Supervisor).
+**Responsabilidad**: Registro y asignación de vehículos, se relacion con: conductor y sistema
 
 ### Model
 
-- Administrador (id, nombre, telefono)
-
-### Repository
-
-- AdministradorRepository
-
-### Service
-
-- AdministradorService (crear, actualizar, leer, eliminar)
-
-### Controller
-
-Nombre Controller: AdministradorController
-
-- POST /admin
-- GET /admin/{id}
-- PUT /admin/{id}
-- DELETE /admin/{id}
-
----
-
-## 7. auth
-
-**Responsabilidad**: Login, registro, tokens JWT.
-
-### Model
-
-- Usuario, Rol, Token
-
-### Repository
-
-- UsuarioRepository, TokenRepository
-
-### Service
-
-- AuthService (login, logout, refreshToken)
-
-### Controller
-
-Nombre Controller: AuthController
-
-- POST /auth/login
-- POST /auth/logout
-
----
-
-## 8. Conductor
-
-**Responsabilidad**: Acciones del conductor.
-
-### Model
-
-- ReporteRuta (id, conductor_id, ruta_id, fecha, observaciones)
-- EstadoViaje (id, estado, hora_inicio, hora_termino)
-
-### Repository
-
-- ReporteRutaRepository
-
-### Service
-
-- ViajeService (iniciarViaje, terminarViaje, productoEntregado)
-- ReporteRutaService
-
-### Controller
-
-Nombre Controller: ConductorActionsController
-
-- POST /viaje/iniciar
-- POST /viaje/terminar
-- POST /producto/entregado
-- POST /reporte/generar
-
----
-
-## 9. vehiculo
-
-**Responsabilidad**: Registro y asignación de vehículos.
-
-### Model
-
-- Vehiculo (id, patente, tipo, capacidad, estado)
-- AsignacionVehiculo (id, conductor_id, vehiculo_id, fecha_asignacion)
+- Vehiculo (id, patente, estado, km_actual)
+- AsignacionVehiculo (id, id_conductor, id_vehiculo, fecha_asignacion)
 
 ### Repository
 
@@ -255,12 +141,12 @@ Nombre Controller: ConductorActionsController
 
 ### Service
 
-- VehiculoService
-- AsignacionVehiculoService
+- VehiculoService (crear, editar, eliminar vehiculo)
+- AsignacionVehiculoService (crear, editar, eliminar asignacion)
 
 ### Controller
 
-Nombre Controller: VehiculoController
+Nombre Controller: gestionarFlotaController
 
 - POST /vehiculos
 - GET /vehiculos/{id}
@@ -269,29 +155,126 @@ Nombre Controller: VehiculoController
 
 ---
 
-## 10. Sistema
+## 6. iniciarViaje()
 
-**Responsabilidad**: Enviar notificaciones, crear reportes.
+**Responsabilidad**: Iniciar un viaje.
 
 ### Model
 
-- Notificacion (id, tipo, mensaje, usuario_id, leido)
-- Informe (id, tipo, fecha, contenido, generado_por)
+- iniciarViaje (id_viaje, hora_inicio, km_actual, id_conductor, id_vehiculo)
+
+### Repository
+
+- iniciarViajeRepository
+
+### Service
+
+- iniciarViaje(id_conductor)
+
+### Controller
+
+Nombre Controller: iniciarViajeController
+
+- POST /viaje/iniciar/{id_conductor}
+
+---
+
+## 7. terminarViaje()
+
+**Responsabilidad**: Finalizar un viaje.
+
+### Model
+
+- terminarViaje (id_viaje, hora_termino, km_final, id_conductor, id_vehiculo)
+
+### Repository
+
+- terminarViajeRepository
+
+### Service
+
+- terminarViaje(id_conductor)
+
+### Controller
+
+Nombre Controller: terminarViajeController
+
+- POST /viaje/terminar/{id_conductor}
+
+---
+
+## 8. cargaEntregada()
+
+**Responsabilidad**: Entrega de una carga.
+
+### Model
+
+- estadoCarga (id, estado, id_conductor, id_viaje)
+
+### Repository
+
+- estadoCargaRepository
+
+### Service
+
+- estadoCargaService (registrarEntrega(id_conductor, id_viaje))
+
+### Controller
+
+Nombre Controller: estadoCargaController
+
+- POST /cargas/{id}/cargaentregada
+
+---
+
+## 9. enviarNotificacion()
+
+**Responsabilidad**: Enviar notificaciones.
+
+### Model
+
+- Notificacion (id_notificacion, hora_notificacion, mensaje_notificacion, id_usuario, estado_notificacion)
 
 ### Repository
 
 - NotificacionRepository
-- InformeRepository
 
 ### Service
 
 - NotificacionService
-- InformeService
+  - enviarNotificacion(id_usuario)
+  - estadoNotificacion(id_notificacion)
+
+### Controller
+
+Nombre Controller: NotificacionController
+
+- POST /notificaciones
+- GET /notificaciones/{id_notificacion}
+- DELETE /notificaciones/{id_notificacion}
+
+---
+
+## 10. crearReporte()
+
+**Responsabilidad**: Crear reportes.
+
+### Model
+
+- reporte (id_reporte, nombre_cliente, apellido_cliente, nombre_empresa, rut_empresa, nombre_conductor, hora_reporte, fecha_reporte, patente_vehiculo, observacion, id_viaje, estado_carga)
+
+### Repository
+
+- reporteRepository
+
+### Service
+
+- ReporteService (generarReporte()) hacer validaciones y llamar microservicios
+- listarReportes()
 
 ### Controller
 
 Nombre Controller: SistemaController
 
-- POST /notificaciones
-- POST /informes
-- GET /informes/{id}
+- POST /reportes
+- GET /reportes/{id_reporte}
