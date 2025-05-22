@@ -12,14 +12,14 @@
 
 ### Repository
 
-UsuarioRepository
-RolRepository
-PermisoRepository
+- UsuarioRepository
+- RolRepository
+- PermisoRepository
 
 ### Service
 
-UsuarioService (crearUsuario, actualizarUsuario, eliminarUsuario, listarPorRol)
-AuthService (login, validación, generación de tokens)
+- UsuarioService (crearUsuario, actualizarUsuario, eliminarUsuario, listarPorRol)
+- AuthService (login, validación, generación de tokens)
 
 ### Controller
 
@@ -44,13 +44,13 @@ Nombre Controller: UsuarioController
 
 ### Repository
 
-ClienteRepository
-EmpresaRepository
+- ClienteRepository
+- EmpresaRepository
 
 ### Service
 
-ClienteService (CRUD + obtenerClientesPorEmpresa)
-EmpresaService
+- ClienteService (CRUD + obtenerClientesPorEmpresa)
+- EmpresaService
 
 ### Controller
 
@@ -76,13 +76,13 @@ Nombre Controller: ClienteController
 
 ### Repository
 
-CargaRepository
-GuiaClienteRepository
+- CargaRepository
+- GuiaClienteRepository
 
 ### Service
 
-CargaService (crearCarga, actualizar, eliminar, cambiarEstado)
-GuiaClienteService (crearGuia, consultarGuia)
+- CargaService (crearCarga, actualizar, eliminar, cambiarEstado)
+- GuiaClienteService (crearGuia, consultarGuia)
 
 ### Controller
 
@@ -112,13 +112,13 @@ Nombre Controller: GuiaClienteController
 
 ### Repository
 
-RutaRepository
-ParadaRepository
-TarifaRutaRepository
+- RutaRepository
+- ParadaRepository
+- TarifaRutaRepository
 
 ### Service
 
-RutaService (crearRuta, calcularTarifa, actualizarRuta, eliminarRuta)
+- RutaService (crearRuta, calcularTarifa, actualizarRuta, eliminarRuta)
 
 ### Controller
 
@@ -142,11 +142,11 @@ Nombre Controller: RutaController
 
 ### Repository
 
-EmpresaRepository
+- EmpresaRepository
 
 ### Service
 
-EmpresaService (crear, editar, eliminar empresa)
+- EmpresaService (crear, editar, eliminar empresa)
 
 ### Controller
 
@@ -169,11 +169,11 @@ Nombre Controller: EmpresaController
 
 ### Repository
 
-AdministradorRepository
+- AdministradorRepository
 
 ### Service
 
-AdministradorService (crear, actualizar, leer, eliminar)
+- AdministradorService (crear, actualizar, leer, eliminar)
 
 ### Controller
 
@@ -200,7 +200,7 @@ Nombre Controller: AdministradorController
 
 ### Service
 
-AuthService (login, logout, refreshToken)
+- AuthService (login, logout, refreshToken)
 
 ### Controller
 
@@ -226,8 +226,8 @@ Nombre Controller: AuthController
 
 ### Service
 
-ViajeService (iniciarViaje, terminarViaje, productoEntregado)
-ReporteRutaService
+- ViajeService (iniciarViaje, terminarViaje, productoEntregado)
+- ReporteRutaService
 
 ### Controller
 
@@ -255,7 +255,8 @@ Nombre Controller: ConductorActionsController
 
 ### Service
 
-VehiculoService, AsignacionVehiculoService
+- VehiculoService
+- AsignacionVehiculoService
 
 ### Controller
 
@@ -279,11 +280,13 @@ Nombre Controller: VehiculoController
 
 ### Repository
 
-- NotificacionRepository, InformeRepository
+- NotificacionRepository
+- InformeRepository
 
 ### Service
 
-NotificacionService, InformeService
+- NotificacionService
+- InformeService
 
 ### Controller
 
