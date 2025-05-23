@@ -1,4 +1,4 @@
-package mitrack_proyecto.mitrack.model;
+package mitrack_proyecto.mitrack.gestionarCliente.model;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,20 +13,14 @@ import lombok.Data;
 @AllArgsConstructor
 // Genera un constructor vacio (sin argumentos)
 @NoArgsConstructor
+public class Empresa {
 
-public class Cliente {
-
-    // Define clave primaria
-    // Se indica que esta id se generara de manera automatica de forma
-    // auto-incremental
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idCli;
-    private String nombreCli;
-    private String apellidoCli;
-    private int runCli;
-    private String dvCli;
-    private int telCli;
-    private String origenCli;
-    private String destinoCli;
+    private Long id_emp;
+    private String nombre_emp;
+    private int rut_emp;
+    private String dv_emp;
+    private String dir_emp;
+
 }

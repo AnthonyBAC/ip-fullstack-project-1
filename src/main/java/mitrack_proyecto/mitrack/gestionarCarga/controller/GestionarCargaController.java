@@ -1,13 +1,14 @@
-package mitrack_proyecto.mitrack.controller;
-
-import mitrack_proyecto.mitrack.model.GestionarCarga;
-import mitrack_proyecto.mitrack.services.GestionarCargaService;
+package mitrack_proyecto.mitrack.gestionarCarga.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import mitrack_proyecto.mitrack.gestionarCarga.model.GestionarCarga;
+import mitrack_proyecto.mitrack.gestionarCarga.services.GestionarCargaService;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;

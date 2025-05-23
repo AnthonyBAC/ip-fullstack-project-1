@@ -2,8 +2,8 @@ package mitrack_proyecto.mitrack.services;
 
 import org.springframework.stereotype.Service;
 
+import mitrack_proyecto.mitrack.gestionarUsuarios.model.Usuario;
 import mitrack_proyecto.mitrack.model.RolNombre;
-import mitrack_proyecto.mitrack.model.Usuario;
 
 @Service
 public class AuthService {

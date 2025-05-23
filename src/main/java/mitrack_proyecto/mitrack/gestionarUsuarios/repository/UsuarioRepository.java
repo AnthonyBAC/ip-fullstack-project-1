@@ -1,7 +1,8 @@
-package mitrack_proyecto.mitrack.repository;
+package mitrack_proyecto.mitrack.gestionarUsuarios.repository;
 
-import mitrack_proyecto.mitrack.model.Usuario;
 import org.springframework.stereotype.Repository;
+
+import mitrack_proyecto.mitrack.gestionarUsuarios.model.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;

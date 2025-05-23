@@ -1,11 +1,12 @@
-package mitrack_proyecto.mitrack.controller;
-
-import mitrack_proyecto.mitrack.model.GuiaCliente;
-import mitrack_proyecto.mitrack.services.GuiaClienteService;
+package mitrack_proyecto.mitrack.gestionarCarga.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import mitrack_proyecto.mitrack.gestionarCarga.model.GuiaCliente;
+import mitrack_proyecto.mitrack.gestionarCarga.services.GuiaClienteService;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;

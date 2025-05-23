@@ -1,7 +1,7 @@
-package mitrack_proyecto.mitrack.controller;
+package mitrack_proyecto.mitrack.gestionarCliente.controller;
 
-import mitrack_proyecto.mitrack.model.Empresa;
-import mitrack_proyecto.mitrack.services.EmpresaService;
+import mitrack_proyecto.mitrack.gestionarCliente.model.Empresa;
+import mitrack_proyecto.mitrack.gestionarCliente.services.EmpresaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
