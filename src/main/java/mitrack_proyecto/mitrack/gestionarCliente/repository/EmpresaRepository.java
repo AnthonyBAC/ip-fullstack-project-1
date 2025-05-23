@@ -33,10 +33,10 @@ public class EmpresaRepository {
 
     // Busca empresa por id
     // utilizando
-    // .stream para buscar usuario en la lista
-    // .filter para filtrar usuario por id
-    // .findFirst para obtener el primer usuario encontrado
-    // .orElse para devolver null si no se encuentra el usuario
+    // .stream para buscar empresa en la lista
+    // .filter para filtrar empresa por id
+    // .findFirst para obtener la primer empresa encontrado
+    // .orElse para devolver null si no se encuentra la empresa
     public Empresa buscarPorId(int id_emp) {
         return listaEmpresas.stream()
                 .filter(empresa -> empresa.getId_emp() == id_emp)
@@ -54,7 +54,7 @@ public class EmpresaRepository {
 
     // Actualiza empresa
     // utilizando un bucle for para recorrer la lista de empresas
-    // utilizando .set para actualizar el usuario encontrado
+    // utilizando .set para actualizar la empresa encontrada
     public Empresa actualizar(Empresa empresaActualizada) {
         for (int i = 0; i < listaEmpresas.size(); i++) {
             if (empresaActualizada.getId_emp().equals(listaEmpresas.get(i).getId_emp())) {
