@@ -10,24 +10,24 @@ import org.springframework.stereotype.Repository;
 
 public class ClienteRepository {
     //CREACION DE LISTA PARA CLIENTES
-    private List<Cliente> lista_clientes = new ArrayList<>();
+    private List<Cliente> listaClientes = new ArrayList<>();
 
     //DATOS DE CLIENTES
     public ClienteRepository() {
-        lista_clientes.add(new Cliente(1, "Juan", "López", 99999999, "9", 912345678, "", ""));
-        lista_clientes.add(new Cliente(2, "Pedro", "Tapia", 11111111, "1", 923456781, "", ""));
-        lista_clientes.add(new Cliente(3, "Carlos",  "Jara",  12345678, "k", 944996666, "", ""));
+        listaClientes.add(new Cliente(1, "Juan", "López", 99999999, "9", 912345678, "", ""));
+        listaClientes.add(new Cliente(2, "Pedro", "Tapia", 11111111, "1", 923456781, "", ""));
+        listaClientes.add(new Cliente(3, "Carlos",  "Jara",  12345678, "k", 944996666, "", ""));
     }
 
     //DEVUELVE LISTA DE CLIENTES
-    public List<Cliente> obtener_clientes() {
-        return lista_clientes;
+    public List<Cliente> obtenerClientes() {
+        return listaClientes;
     }
 
     //BUSCAR CLIENTE POR ID
-    public Cliente buscar_por_id(int id) {
-        for (Cliente cliente : lista_clientes) {
-            if (cliente.getId_cli() == id) {
+    public Cliente buscarPorId(int id) {
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getIdCli() == id) {
                 return cliente;
             }
         }
@@ -35,9 +35,9 @@ public class ClienteRepository {
     }
 
     //BUSCAR POR NOMBRE
-    public Cliente buscar_por_autor(String nombre_cli) {
-        for (Cliente cliente : lista_clientes) {
-            if (cliente.getNombre_cli().equals(nombre_cli)) {
+    public Cliente buscarPorNombre(String nombreCli) {
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getNombreCli().equals(nombreCli)) {
                 return cliente;
             }
         }
@@ -46,46 +46,46 @@ public class ClienteRepository {
 
     //GUARDAR CLIENTE Y RETORNA
 
-    public Cliente guardar_cliente(Cliente cli) {
-    lista_clientes.add(cli);
+    public Cliente guardarCliente(Cliente cli) {
+    listaClientes.add(cli);
     return cli;
     }
 
     //ELIMINAR CLIENTE
 
-    public void eliminar_cliente(int id) {
-        Cliente cliente = buscar_por_id(id);
+    public void eliminarCliente(int id) {
+        Cliente cliente = buscarPorId(id);
         if (cliente != null) {
-            lista_clientes.remove(cliente);
+            listaClientes.remove(cliente);
         }
     }
 
     //ACTUALIZAR CLIENTE
 
-    public Cliente actualizar_cliente(Cliente cli) {
+    public Cliente actualizarCliente(Cliente cli) {
         int id = 0;
         int idPosicion = 0;
 
         //REPASO DE LA LISTA COMENZANDO DESDE LA POSICION 0 EN ID_CLIENTE
-        for (int i = 0; i < lista_clientes.size(); i++) {
-            if (lista_clientes.get(i).getId_cli() == cli.getId_cli()) {
-                id = cli.getId_cli();
+        for (int i = 0; i < listaClientes.size(); i++) {
+            if (listaClientes.get(i).getIdCli() == cli.getIdCli()) {
+                id = cli.getIdCli();
                 idPosicion = i;
             }
         }
 
         //SETEA DATOS NUEVOS A UNA LISTA NUEVA
         Cliente cliente1 = new Cliente();
-        cliente1.setId_cli(id);
-        cliente1.setNombre_cli(cli.getNombre_cli());
-        cliente1.setApellido_cli(cli.getApellido_cli());
-        cliente1.setRun_cli(cli.getRun_cli());
-        cliente1.setDv_cli(cli.getDv_cli());
-        cliente1.setTel_cli(cli.getTel_cli());
-        cliente1.setOrigen_cli(cli.getOrigen_cli());
-        cliente1.setDestino_cli(cli.getDestino_cli());
+        cliente1.setIdCli(id);
+        cliente1.setNombreCli(cli.getNombreCli());
+        cliente1.setApellidoCli(cli.getApellidoCli());
+        cliente1.setRunCli(cli.getRunCli());
+        cliente1.setDvCli(cli.getDvCli());
+        cliente1.setTelCli(cli.getTelCli());
+        cliente1.setOrigenCli(cli.getOrigenCli());
+        cliente1.setDestinoCli(cli.getDestinoCli());
 
-        lista_clientes.set(idPosicion, cliente1);
+        listaClientes.set(idPosicion, cliente1);
         return cliente1;
     }
 
