@@ -1,4 +1,4 @@
-package mitrack_proyecto.mitrack.model;
+package mitrack_proyecto.mitrack.gestionarUsuarios.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import mitrack_proyecto.mitrack.model.RolNombre;
 import lombok.Data;
 
 //Genera automaticamente getters y setters toStringetc() ahorro.

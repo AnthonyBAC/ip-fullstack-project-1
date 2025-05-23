@@ -1,7 +1,8 @@
-package mitrack_proyecto.mitrack.services;
+package mitrack_proyecto.mitrack.gestionarUsuarios.services;
 
-import mitrack_proyecto.mitrack.model.Usuario;
-import mitrack_proyecto.mitrack.repository.UsuarioRepository;
+import mitrack_proyecto.mitrack.gestionarUsuarios.model.Usuario;
+import mitrack_proyecto.mitrack.gestionarUsuarios.repository.UsuarioRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 

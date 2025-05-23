@@ -1,7 +1,9 @@
-package mitrack_proyecto.mitrack.repository;
+package mitrack_proyecto.mitrack.gestionarCliente.repository;
 
-import mitrack_proyecto.mitrack.model.Empresa;
 import org.springframework.stereotype.Repository;
+
+import mitrack_proyecto.mitrack.gestionarCliente.model.Empresa;
+
 import java.util.ArrayList;
 import java.util.List;
 

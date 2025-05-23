@@ -1,11 +1,12 @@
-package mitrack_proyecto.mitrack.services;
+package mitrack_proyecto.mitrack.gestionarCarga.services;
 
-import mitrack_proyecto.mitrack.repository.GuiaClienteRepository;
-import mitrack_proyecto.mitrack.model.GuiaCliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+
+import mitrack_proyecto.mitrack.gestionarCarga.model.GuiaCliente;
+import mitrack_proyecto.mitrack.gestionarCarga.repository.GuiaClienteRepository;
 
 @Service
 public class GuiaClienteService {

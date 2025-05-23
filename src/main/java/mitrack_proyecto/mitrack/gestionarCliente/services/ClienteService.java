@@ -1,8 +1,8 @@
-package mitrack_proyecto.mitrack.services;
+package mitrack_proyecto.mitrack.gestionarCliente.services;
 
-import mitrack_proyecto.mitrack.model.Cliente;
-import mitrack_proyecto.mitrack.model.Usuario;
-import mitrack_proyecto.mitrack.repository.ClienteRepository;
+import mitrack_proyecto.mitrack.gestionarCliente.model.Cliente;
+import mitrack_proyecto.mitrack.gestionarCliente.repository.ClienteRepository;
+import mitrack_proyecto.mitrack.gestionarUsuarios.model.Usuario;
 import mitrack_proyecto.mitrack.services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

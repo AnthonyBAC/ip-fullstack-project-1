@@ -1,7 +1,8 @@
-package mitrack_proyecto.mitrack.repository;
+package mitrack_proyecto.mitrack.gestionarCarga.repository;
 
-import mitrack_proyecto.mitrack.model.GestionarCarga;
 import org.springframework.stereotype.Repository;
+
+import mitrack_proyecto.mitrack.gestionarCarga.model.GestionarCarga;
 
 import java.util.ArrayList;
 import java.util.List;

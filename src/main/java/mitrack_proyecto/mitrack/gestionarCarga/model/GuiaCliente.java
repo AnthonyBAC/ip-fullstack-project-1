@@ -1,10 +1,11 @@
-package mitrack_proyecto.mitrack.model;
+package mitrack_proyecto.mitrack.gestionarCarga.model;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import mitrack_proyecto.mitrack.gestionarCliente.model.Cliente;
 import lombok.Data;
 
 @Data
