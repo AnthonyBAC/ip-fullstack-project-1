@@ -10,34 +10,43 @@ import java.util.List;
 @Service
 public class EmpresaService {
 
-    // Inyeccion de repositorio para utilizar sus metodos
     @Autowired
-    private EmpresaRepository empresa_repository;
+    private EmpresaRepository empresaRepository;
 
-    // Llamando metodos desde repository
     public List<Empresa> obtenerEmpresas() {
-        return empresa_repository.obtenerEmpresas();
+        return empresaRepository.obtenerEmpresas();
     }
 
     public Empresa buscarPorId(int id_emp) {
-        return empresa_repository.buscarPorId(id_emp);
+        Empresa empresa = empresaRepository.buscarPorId(id_emp);
+        if (empresa == null) {
+            throw new RuntimeException("Empresa no encontrada");
+        }
+        return empresa;
     }
 
     public Empresa buscarPorNombre(String nombre_emp) {
-        return empresa_repository.buscarPorNombre(nombre_emp);
+        Empresa empresa = empresaRepository.buscarPorNombre(nombre_emp);
+        if (empresa == null) {
+            throw new RuntimeException("Empresa no encontrada");
+        }
+        return empresa;
     }
 
     public Empresa guardarEmpresa(Empresa empresa) {
-        return empresa_repository.guardarEmpresa(empresa);
+        return empresaRepository.guardar(empresa);
     }
 
     public String eliminarEmpresaPorId(int id_emp) {
-        empresa_repository.eliminarEmpresaPorId(id_emp);
-        return "Empresa eliminada existosamente";
+        boolean eliminado = empresaRepository.eliminar(id_emp);
+        if (!eliminado) {
+            throw new RuntimeException("No se encontró empresa para eliminar");
+        }
+        return "Empresa eliminada exitosamente";
     }
 
-    public Empresa actualizarEmpresa(Empresa empresa) {
-        return empresa_repository.actualizarEmpresa(empresa);
+    public Empresa actualizarEmpresa(Empresa empresaActualizada) {
+        return empresaRepository.actualizar(empresaActualizada);
     }
 
 }
