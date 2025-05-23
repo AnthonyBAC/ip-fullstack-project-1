@@ -48,7 +48,7 @@ public class UsuarioService {
     // Metodo para eliminar usuario por id
     // retorna mensaje de confirmacion si se elimina, sino lanza excepcion
     public String eliminarUsuarioPorId(Long id) {
-        boolean usuarioid = usuarioRepository.eliminar(id);
+        boolean usuarioid = usuarioRepository.eliminarPorId(id);
         if (!usuarioid) {
             throw new RuntimeException("No se encontró usuario para eliminar");
         }
@@ -58,7 +58,7 @@ public class UsuarioService {
     // Metodo para actualizar usuario
     // Retorna usuario actualizado
     public Usuario actualizarUsuario(Usuario usuario) {
-        return usuarioRepository.actualizar(usuario);
+        return usuarioRepository.actualizarPorId(usuario);
     }
 
 }

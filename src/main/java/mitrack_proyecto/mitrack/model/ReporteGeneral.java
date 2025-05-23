@@ -18,5 +18,5 @@ public class ReporteGeneral {
     private LocalTime horaSalida;
     private LocalTime horaEntrada;
     private LocalTime duracionViaje;
-    private ReporteCarga ReporteCarga;
+    private GestionarCarga ReporteCarga;
 }

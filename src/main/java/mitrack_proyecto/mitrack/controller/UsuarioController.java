@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/usuarios")
+@RequestMapping("/api/v1/usuario")
 public class UsuarioController {
     @Autowired
     private UsuarioService usuario_service;
@@ -25,7 +25,7 @@ public class UsuarioController {
         return usuario_service.obtenerUsuarios();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Usuario buscarPorId(@PathVariable Long id_usuario) {
         return usuario_service.buscarPorId(id_usuario);
     }
@@ -40,13 +40,14 @@ public class UsuarioController {
         return usuario_service.guardarUsuario(usuario);
     }
 
-    @DeleteMapping({ "id" })
+    @DeleteMapping({ "/{id}" })
     public String eliminarUsuarioPorId(@PathVariable Long id_usuario) {
         return usuario_service.eliminarUsuarioPorId(id_usuario);
     }
 
-    @PutMapping({ "id" })
+    @PutMapping({ "/{id}" })
     public Usuario actualizarUsuario(@PathVariable Long id_usuario, @RequestBody Usuario usuario) {
+        usuario.setId_usuario(id_usuario);
         return usuario_service.actualizarUsuario(usuario);
     }
 

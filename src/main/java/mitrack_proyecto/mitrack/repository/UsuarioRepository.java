@@ -25,7 +25,7 @@ public class UsuarioRepository {
 
     // Elimina usuario
     // utilizando .removeIf para eliminar usuario de la lista
-    public boolean eliminar(Long id) {
+    public boolean eliminarPorId(Long id) {
         return listaUsuarios.removeIf(usuario -> usuario.getId_usuario().equals(id));
     }
 
@@ -53,7 +53,7 @@ public class UsuarioRepository {
     // Actualiza usuario
     // utilizando un bucle for para recorrer la lista de usuarios
     // utilizando .set para actualizar el usuario encontrado
-    public Usuario actualizar(Usuario usuarioActualizado) {
+    public Usuario actualizarPorId(Usuario usuarioActualizado) {
         for (int i = 0; i < listaUsuarios.size(); i++) {
             if (usuarioActualizado.getId_usuario().equals(listaUsuarios.get(i).getId_usuario())) {
                 listaUsuarios.set(i, usuarioActualizado);
