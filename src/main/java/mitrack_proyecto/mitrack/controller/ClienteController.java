@@ -1,6 +1,8 @@
 package mitrack_proyecto.mitrack.controller;
 
 import mitrack_proyecto.mitrack.model.Cliente;
+import mitrack_proyecto.mitrack.model.Usuario;
+import mitrack_proyecto.mitrack.services.AuthService;
 import mitrack_proyecto.mitrack.services.ClienteService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,35 +17,41 @@ public class ClienteController {
 
     // VARIABLE PARA EL SERVICE
     @Autowired
-    private ClienteService cliente_service;
+    private ClienteService clienteService;
+
+    @Autowired
+    private AuthService authService;
 
     // METODO GET PARA OBTENER LISTA DE CLIENTES
     @GetMapping
-    public List<Cliente> listar_cliente() {
-        return cliente_service.get_cliente();
+    public List<Cliente> listarCliente() {
+        return clienteService.getCliente();
     }
 
     // METODO POST PARA AGREGAR UN CLIENTE
     @PostMapping
-    public Cliente agregar_cliente(@RequestBody Cliente cliente) {
-        return cliente_service.save_cliente(cliente);
+    public Cliente agregarCliente(@RequestBody Cliente cliente, Usuario usuarioActual) {
+        authService.verificarAdmin(usuarioActual);
+        return clienteService.saveCliente(cliente, usuarioActual);
     }
 
     // METODO GET PARA BUSCAR EL CLIENTE POR ID
     @GetMapping("{id}")
-    public Cliente buscar_cliente(@PathVariable int id_cli) {
-        return cliente_service.get_id_cliente(id_cli);
+    public Cliente buscarCliente(@PathVariable int idCli) {
+        return clienteService.getIdCliente(idCli);
     }
 
     // METODO PUT PARA ACTUALIZAR CLIENTE
     @PutMapping
-    public Cliente actualizar_cliente(@PathVariable int id_cli, @RequestBody Cliente cliente) {
-        return cliente_service.update_cliente(cliente);
+    public Cliente actualizarCliente(@PathVariable int idCli, @RequestBody Cliente cliente, Usuario usuarioActual) {
+        authService.verificarAdmin(usuarioActual);
+        return clienteService.updateCliente(cliente, usuarioActual);
     }
 
     // METODO DELETE PARA ELIMINAR CLIENTE
     @DeleteMapping
-    public String eliminar_cliente(@PathVariable int id_cli) {
-        return cliente_service.delete_cliente(id_cli);
+    public String eliminarCliente(@PathVariable int idCli, Usuario usuarioActual) {
+        authService.verificarAdmin(usuarioActual);
+        return clienteService.deleteCliente(idCli, usuarioActual);
     }
 }

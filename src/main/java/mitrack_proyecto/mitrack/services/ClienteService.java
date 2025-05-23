@@ -1,7 +1,9 @@
 package mitrack_proyecto.mitrack.services;
 
 import mitrack_proyecto.mitrack.model.Cliente;
+import mitrack_proyecto.mitrack.model.Usuario;
 import mitrack_proyecto.mitrack.repository.ClienteRepository;
+import mitrack_proyecto.mitrack.services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -11,31 +13,37 @@ public class ClienteService {
 
     // VARIABLE PARA EL REPOSITORIO
     @Autowired
-    private ClienteRepository cliente_repository;
+    private ClienteRepository clienteRepository;
+
+    @Autowired
+    private AuthService authService;
 
     // OBTENER LISTA DE CLIENTES
-    public List<Cliente> get_cliente() {
-        return cliente_repository.obtener_clientes();
+    public List<Cliente> getCliente() {
+        return clienteRepository.obtenerClientes();
     }
 
     // AGREGAR CLIENTE
-    public Cliente save_cliente(Cliente cliente) {
-        return cliente_repository.guardar_cliente(cliente);
+    public Cliente saveCliente(Cliente cliente, Usuario usuarioActual) {
+        authService.verificarAdmin(usuarioActual);
+        return clienteRepository.guardarCliente(cliente);
     }
 
     // BUSCAR CLIENTE POR ID
-    public Cliente get_id_cliente(int id) {
-        return cliente_repository.buscar_por_id(id);
+    public Cliente getIdCliente(int id) {
+        return clienteRepository.buscarPorId(id);
     }
 
     // ACTUALIZAR CLIENTE
-    public Cliente update_cliente(Cliente cliente) {
-        return cliente_repository.actualizar_cliente(cliente);
+    public Cliente updateCliente(Cliente cliente, Usuario usuarioActual) {
+        authService.verificarAdmin(usuarioActual);
+        return clienteRepository.actualizarCliente(cliente);
     }
 
     // ELIMINAR CLIENTE
-    public String delete_cliente(int id) {
-        cliente_repository.eliminar_cliente(id);
+    public String deleteCliente(int id, Usuario usuarioActual) {
+        authService.verificarAdmin(usuarioActual);
+        clienteRepository.eliminarCliente(id);
         return "Cliente eliminado";
     }
 
