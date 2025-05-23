@@ -8,43 +8,51 @@ import java.util.List;
 @Repository
 public class EmpresaRepository {
 
-    private List<Empresa> listaEmpresas;
+    // Lista que almacena las empresas en memoria
+    private final List<Empresa> listaEmpresas = new ArrayList<>();
 
-    public EmpresaRepository() {
-        this.listaEmpresas = new ArrayList<>();
-    }
-
+    // Retorna lista de empresas
     public List<Empresa> obtenerEmpresas() {
         return listaEmpresas;
     }
 
+    // Guarda empresa
+    // utilizando .add para agregar empresa a la lista
     public Empresa guardar(Empresa empresa) {
         listaEmpresas.add(empresa);
         return empresa;
     }
 
+    // Elimina empresa
+    // utilizando .removeIf para eliminar empresa de la lista
     public boolean eliminar(int id_emp) {
         return listaEmpresas.removeIf(empresa -> empresa.getId_emp() == id_emp);
     }
 
+    // Busca empresa por id
+    // utilizando
+    // .stream para buscar usuario en la lista
+    // .filter para filtrar usuario por id
+    // .findFirst para obtener el primer usuario encontrado
+    // .orElse para devolver null si no se encuentra el usuario
     public Empresa buscarPorId(int id_emp) {
-        for (Empresa empresa : listaEmpresas) {
-            if (empresa.getId_emp() == id_emp) {
-                return empresa;
-            }
-        }
-        return null;
+        return listaEmpresas.stream()
+                .filter(empresa -> empresa.getId_emp() == id_emp)
+                .findFirst()
+                .orElse(null);
     }
 
+    // Busca empresa por nombre
     public Empresa buscarPorNombre(String nombre_emp) {
-        for (Empresa empresa : listaEmpresas) {
-            if (empresa.getNombre_emp().equals(nombre_emp)) {
-                return empresa;
-            }
-        }
-        return null;
+        return listaEmpresas.stream()
+                .filter(empresa -> empresa.getNombre_emp().equals(nombre_emp))
+                .findFirst()
+                .orElse(null);
     }
 
+    // Actualiza empresa
+    // utilizando un bucle for para recorrer la lista de empresas
+    // utilizando .set para actualizar el usuario encontrado
     public Empresa actualizar(Empresa empresaActualizada) {
         for (int i = 0; i < listaEmpresas.size(); i++) {
             if (empresaActualizada.getId_emp().equals(listaEmpresas.get(i).getId_emp())) {

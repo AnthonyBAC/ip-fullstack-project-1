@@ -12,7 +12,7 @@ import java.util.List;
 
 //MAPEO DE CLIENTES
 @RestController
-@RequestMapping("/api/v1/empresas/{id_emp}")
+@RequestMapping("/api/v1/clientes")
 public class ClienteController {
 
     // VARIABLE PARA EL SERVICE
