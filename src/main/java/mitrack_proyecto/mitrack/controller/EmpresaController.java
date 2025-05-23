@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/empresas")
+@RequestMapping("/api/v1/empresa")
 public class EmpresaController {
     // Inyeccion de servicio para utilizar sus metodos
     @Autowired
