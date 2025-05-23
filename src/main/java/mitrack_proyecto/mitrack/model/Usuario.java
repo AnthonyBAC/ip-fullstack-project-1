@@ -30,8 +30,6 @@ public class Usuario {
     @Email
     @NotBlank
     private String email_usr;
-    @NotBlank
-    private String contraseña_usr;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_rol")
     private Rol rol;

@@ -28,13 +28,13 @@ public class EmpresaController {
     }
 
     // Busca empresa por id
-    @GetMapping("{id_emp}")
+    @GetMapping("/{id_emp}")
     public Empresa buscarPorId(@PathVariable int id_emp) {
         return empresa_service.buscarPorId(id_emp);
     }
 
     // Busca empresa por nombre
-    @GetMapping("/empresa/{nombre}")
+    @GetMapping("/nombre/{nombre}")
     public Empresa buscarEmpresaPorNombre(@PathVariable("nombre") String nombre) {
         return empresa_service.buscarPorNombre(nombre);
     }
@@ -48,13 +48,13 @@ public class EmpresaController {
 
     // Elimina empresa, utilizando anotacion path variable para capturar el id y
     // pasarlo como parametro
-    @DeleteMapping({ "{id_emp}" })
+    @DeleteMapping({ "/{id_emp}" })
     public String elimarEmpresaPorId(@PathVariable int id_emp) {
         return empresa_service.eliminarEmpresaPorId(id_emp);
     }
 
     // Actualiza empresa, utilizando anotacion path variable para buscar el id
-    @PutMapping({ "{id_emp}" })
+    @PutMapping({ "/{id_emp}" })
     public Empresa actualizarEmpresa(@PathVariable int id_emp, @RequestBody Empresa empresa) {
         return empresa_service.actualizarEmpresa(empresa);
     }

@@ -7,11 +7,13 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+public class GestionarCarga {
 
-public class ReporteCarga {
-
-    private int idFactura;
-    private Cliente cliente;
-    private String estado;
-    private Carga producto;
+    private Long id_carga;
+    private String descripcion;
 }
+
+/*
+ * Carga (id, descripcion)
+ * GuiaCliente (id, id_cliente, id_ruta, id_carga)
+ */
