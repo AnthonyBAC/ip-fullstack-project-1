@@ -6,6 +6,7 @@ import mitrack_proyecto.mitrack.gestionarRuta.model.Ruta;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class RutaRepository {
 
     // Genera lista de rutas
