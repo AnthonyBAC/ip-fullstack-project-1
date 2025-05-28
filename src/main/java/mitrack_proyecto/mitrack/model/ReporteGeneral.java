@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import mitrack_proyecto.mitrack.gestionarCarga.model.GestionarCarga;
 import mitrack_proyecto.mitrack.gestionarCliente.model.Cliente;
+import mitrack_proyecto.mitrack.gestionarRuta.model.Ruta;
 import lombok.Data;
 
 @Data
