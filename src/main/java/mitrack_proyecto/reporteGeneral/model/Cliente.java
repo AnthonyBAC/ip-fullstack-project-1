@@ -1,5 +1,5 @@
 package mitrack_proyecto.reporteGeneral.model;
 
-public class reporteGeneral {
+public class Cliente {
 
 }
