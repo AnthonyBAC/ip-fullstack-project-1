@@ -1,10 +1,10 @@
-package mitrack_proyecto.mitrack.gestionEntrada.controller;
+package mitrack_proyecto.mitrack.gestionEntrada.model;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "VEHICULOS_ENTRADA")
-public class GestionEntradaController {
+public class GestionEntradaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "vehiculo_seq")
     @SequenceGenerator(name = "vehiculo_seq", sequenceName = "VEHICULO_ENTRADA_SEQ", allocationSize = 1)
