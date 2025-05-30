@@ -1,4 +1,4 @@
-package mitrack_proyecto.reporteGeneral.repository;
+package mitrack_proyecto.mitrack.reporteGeneral.repository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,12 +9,12 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class MiTrackReporteRepository {
-    
+
     private static final Logger logger = LoggerFactory.getLogger(MiTrackReporteRepository.class);
-    
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    
+
     // Método helper para ejecutar consultas con manejo de errores
     private Long ejecutarConsulta(String sql, String descripcion) {
         try {
@@ -26,50 +26,47 @@ public class MiTrackReporteRepository {
             return 0L;
         }
     }
-    
+
     // Consultas para cada módulo de MiTrack
     public Long contarUsuarios() {
         return ejecutarConsulta("SELECT COUNT(*) FROM USUARIOS", "Total Usuarios");
     }
-    
+
     public Long contarClientes() {
         return ejecutarConsulta("SELECT COUNT(*) FROM CLIENTES", "Total Clientes");
     }
-    
+
     public Long contarVehiculos() {
         return ejecutarConsulta("SELECT COUNT(*) FROM VEHICULOS", "Total Vehículos");
     }
-    
+
     public Long contarRutas() {
         return ejecutarConsulta("SELECT COUNT(*) FROM RUTAS", "Total Rutas");
     }
-    
+
     public Long contarCargas() {
         return ejecutarConsulta("SELECT COUNT(*) FROM CARGAS", "Total Cargas");
     }
-    
+
     // Consultas con filtros
     public Long contarUsuariosActivos() {
         return ejecutarConsulta(
-            "SELECT COUNT(*) FROM USUARIOS WHERE ACTIVO = 1 OR ESTADO = 'ACTIVO'", 
-            "Usuarios Activos"
-        );
+                "SELECT COUNT(*) FROM USUARIOS WHERE ACTIVO = 1 OR ESTADO = 'ACTIVO'",
+                "Usuarios Activos");
     }
-    
+
     public Long contarVehiculosDisponibles() {
         return ejecutarConsulta(
-            "SELECT COUNT(*) FROM VEHICULOS WHERE ESTADO = 'DISPONIBLE' OR ACTIVO = 1", 
-            "Vehículos Disponibles"
-        );
+                "SELECT COUNT(*) FROM VEHICULOS WHERE ESTADO = 'DISPONIBLE' OR ACTIVO = 1",
+                "Vehículos Disponibles");
     }
-    
+
     public Long contarRutasActivas() {
         return ejecutarConsulta(
-            "SELECT COUNT(*) FROM RUTAS WHERE ESTADO = 'ACTIVA' OR ACTIVO = 1", 
-            "Rutas Activas"
-        );
+                "SELECT COUNT(*) FROM RUTAS WHERE ESTADO = 'ACTIVA' OR ACTIVO = 1",
+                "Rutas Activas");
     }
-    
+
     // Método para verificar conectividad
     public boolean verificarConexion() {
         try {
