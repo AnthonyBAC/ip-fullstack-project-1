@@ -69,7 +69,11 @@ public class EmpresaService {
 
     // Metodo para actualizar empresa
     // Retorna empresa actualizada
-    public Empresa actualizarEmpresa(Empresa empresaActualizada) {
+    // Verifica que el id de la empresa coincida con el id proporcionado
+    public Empresa actualizarEmpresa(int id_emp, Empresa empresaActualizada) {
+        if (!empresaActualizada.getId_emp().equals((long) id_emp)) {
+            throw new RuntimeException("No se permite modificar el ID de la empresa.");
+        }
         return empresaRepository.actualizar(empresaActualizada);
     }
 
