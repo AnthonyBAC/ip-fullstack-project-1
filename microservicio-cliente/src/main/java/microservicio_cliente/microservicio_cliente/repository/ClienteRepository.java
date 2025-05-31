@@ -27,12 +27,10 @@ public class ClienteRepository {
 
     // BUSCAR CLIENTE POR ID
     public Cliente buscarPorId(int id) {
-        for (Cliente cliente : listaClientes) {
-            if (cliente.getIdCli() == id) {
-                return cliente;
-            }
-        }
-        return null;
+        return listaClientes.stream()
+                .filter(cliente -> cliente.getIdCli() == id)
+                .findFirst()
+                .orElse(null);
     }
 
     // BUSCAR POR NOMBRE
@@ -53,12 +51,8 @@ public class ClienteRepository {
     }
 
     // ELIMINAR CLIENTE
-
-    public void eliminarCliente(int id) {
-        Cliente cliente = buscarPorId(id);
-        if (cliente != null) {
-            listaClientes.remove(cliente);
-        }
+    public boolean eliminarCliente(int id) {
+        return listaClientes.removeIf(cliente -> cliente.getIdCli() == id);
     }
 
     // ACTUALIZAR CLIENTE

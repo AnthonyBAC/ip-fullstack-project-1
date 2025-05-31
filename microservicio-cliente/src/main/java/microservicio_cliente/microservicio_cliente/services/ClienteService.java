@@ -25,8 +25,13 @@ public class ClienteService {
     }
 
     // BUSCAR CLIENTE POR ID
-    public Cliente getIdCliente(int id) {
-        return clienteRepository.buscarPorId(id);
+    // Retorna cliente si se encuentra, sino lanza excepcion
+    public Cliente buscarPorId(int id) {
+        Cliente cliente = clienteRepository.buscarPorId(id);
+        if (cliente == null) {
+            throw new RuntimeException("Cliente no encontrado");
+        }
+        return cliente;
     }
 
     // ACTUALIZAR CLIENTE
@@ -35,9 +40,12 @@ public class ClienteService {
     }
 
     // ELIMINAR CLIENTE
-    public String deleteCliente(int id) {
-        clienteRepository.eliminarCliente(id);
-        return "Cliente eliminado";
+    // Retorna mensaje de confirmacion si se elimina, sino lanza excepcion
+    public String eliminarClientePorId(int id) {
+        boolean cliente = clienteRepository.eliminarCliente(id);
+        if (!cliente) {
+            throw new RuntimeException("No se encontró cliente para eliminar");
+        }
+        return "Cliente eliminado exitosamente";
     }
-
 }
