@@ -51,12 +51,8 @@ public class ClienteRepository {
     }
 
     // ELIMINAR CLIENTE
-
-    public void eliminarCliente(int id) {
-        Cliente cliente = buscarPorId(id);
-        if (cliente != null) {
-            listaClientes.remove(cliente);
-        }
+    public boolean eliminarCliente(int id) {
+        return listaClientes.removeIf(cliente -> cliente.getIdCli() == id);
     }
 
     // ACTUALIZAR CLIENTE

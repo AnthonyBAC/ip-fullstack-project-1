@@ -30,20 +30,20 @@ public class ClienteController {
     }
 
     // METODO GET PARA BUSCAR EL CLIENTE POR ID
-    @GetMapping("{id}")
+    @GetMapping("/{idCli}")
     public Cliente buscarCliente(@PathVariable int idCli) {
-        return clienteService.getIdCliente(idCli);
+        return clienteService.buscarPorId(idCli);
     }
 
     // METODO PUT PARA ACTUALIZAR CLIENTE
-    @PutMapping
+    @PutMapping({ "/{idCli}" })
     public Cliente actualizarCliente(@PathVariable int idCli, @RequestBody Cliente cliente) {
         return clienteService.updateCliente(cliente);
     }
 
     // METODO DELETE PARA ELIMINAR CLIENTE
-    @DeleteMapping
+    @DeleteMapping({ "/{idCli}" })
     public String eliminarCliente(@PathVariable int idCli) {
-        return clienteService.deleteCliente(idCli);
+        return clienteService.eliminarClientePorId(idCli);
     }
 }
