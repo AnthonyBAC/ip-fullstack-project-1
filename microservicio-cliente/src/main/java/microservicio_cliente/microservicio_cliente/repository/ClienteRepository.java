@@ -27,12 +27,10 @@ public class ClienteRepository {
 
     // BUSCAR CLIENTE POR ID
     public Cliente buscarPorId(int id) {
-        for (Cliente cliente : listaClientes) {
-            if (cliente.getIdCli() == id) {
-                return cliente;
-            }
-        }
-        return null;
+        return listaClientes.stream()
+                .filter(cliente -> cliente.getIdCli() == id)
+                .findFirst()
+                .orElse(null);
     }
 
     // BUSCAR POR NOMBRE
