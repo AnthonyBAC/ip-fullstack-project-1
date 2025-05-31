@@ -54,9 +54,10 @@ public class EmpresaController {
     }
 
     // Actualiza empresa, utilizando anotacion path variable para buscar el id
-    @PutMapping({ "/{id_emp}" })
+    // y request body para mapear o buscar el objeto empresa
+    @PutMapping("/{id_emp}")
     public Empresa actualizarEmpresa(@PathVariable int id_emp, @RequestBody Empresa empresa) {
-        return empresa_service.actualizarEmpresa(empresa);
+        return empresa_service.actualizarEmpresa(id_emp, empresa);
     }
 
 }
