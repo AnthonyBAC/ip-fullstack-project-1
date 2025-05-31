@@ -21,7 +21,7 @@ public class Cliente {
     // auto-incremental
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idCli;
+    private Long idCli;
     private String nombreCli;
     private String apellidoCli;
     private int runCli;

@@ -35,8 +35,11 @@ public class ClienteService {
     }
 
     // ACTUALIZAR CLIENTE
-    public Cliente updateCliente(Cliente cliente) {
-        return clienteRepository.actualizarCliente(cliente);
+     public Cliente actualizarCliente(int idCli, Cliente clienteActualizado) {
+        if (!clienteActualizado.getIdCli().equals((long) idCli)) {
+            throw new RuntimeException("No se permite modificar el ID del cliente.");
+        }
+        return clienteRepository.actualizarCliente(clienteActualizado);
     }
 
     // ELIMINAR CLIENTE

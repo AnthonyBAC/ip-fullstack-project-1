@@ -15,9 +15,9 @@ public class ClienteRepository {
 
     // DATOS DE CLIENTES
     public ClienteRepository() {
-        listaClientes.add(new Cliente(1, "Juan", "López", 99999999, "9", 912345678, "", ""));
-        listaClientes.add(new Cliente(2, "Pedro", "Tapia", 11111111, "1", 923456781, "", ""));
-        listaClientes.add(new Cliente(3, "Carlos", "Jara", 12345678, "k", 944996666, "", ""));
+        listaClientes.add(new Cliente(1L, "Juan", "López", 99999999, "9", 912345678, "", ""));
+        listaClientes.add(new Cliente(2L, "Pedro", "Tapia", 11111111, "1", 923456781, "", ""));
+        listaClientes.add(new Cliente(3L, "Carlos", "Jara", 12345678, "k", 944996666, "", ""));
     }
 
     // DEVUELVE LISTA DE CLIENTES
@@ -56,32 +56,15 @@ public class ClienteRepository {
     }
 
     // ACTUALIZAR CLIENTE
-
-    public Cliente actualizarCliente(Cliente cli) {
-        int id = 0;
-        int idPosicion = 0;
-
-        // REPASO DE LA LISTA COMENZANDO DESDE LA POSICION 0 EN ID_CLIENTE
+    public Cliente actualizarCliente(Cliente clienteActualizado) {
         for (int i = 0; i < listaClientes.size(); i++) {
-            if (listaClientes.get(i).getIdCli() == cli.getIdCli()) {
-                id = cli.getIdCli();
-                idPosicion = i;
+            if (clienteActualizado.getIdCli().equals(listaClientes.get(i).getIdCli())) {
+                listaClientes.set(i, clienteActualizado);
+                return clienteActualizado;
             }
         }
-
-        // SETEA DATOS NUEVOS A UNA LISTA NUEVA
-        Cliente cliente1 = new Cliente();
-        cliente1.setIdCli(id);
-        cliente1.setNombreCli(cli.getNombreCli());
-        cliente1.setApellidoCli(cli.getApellidoCli());
-        cliente1.setRunCli(cli.getRunCli());
-        cliente1.setDvCli(cli.getDvCli());
-        cliente1.setTelCli(cli.getTelCli());
-        cliente1.setOrigenCli(cli.getOrigenCli());
-        cliente1.setDestinoCli(cli.getDestinoCli());
-
-        listaClientes.set(idPosicion, cliente1);
-        return cliente1;
+        throw new RuntimeException("Cliente no encontrado");
     }
+
 
 }

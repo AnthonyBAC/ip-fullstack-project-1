@@ -38,7 +38,7 @@ public class ClienteController {
     // METODO PUT PARA ACTUALIZAR CLIENTE
     @PutMapping({ "/{idCli}" })
     public Cliente actualizarCliente(@PathVariable int idCli, @RequestBody Cliente cliente) {
-        return clienteService.updateCliente(cliente);
+        return clienteService.actualizarCliente(idCli, cliente);
     }
 
     // METODO DELETE PARA ELIMINAR CLIENTE
