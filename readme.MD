@@ -1,6 +1,6 @@
 # Microservicios - Sistema de Gestión de Flota
 
-## 1. gestionarUsuarios()
+## 1. gestionUsuario()
 
 **Responsabilidad**: Administrar usuarios del sistema. Relaciona con: AUTH, gestionarClientes(), gestionarFlota()
 
@@ -31,7 +31,7 @@ Nombre Controller: UsuarioController
 
 ---
 
-## 2. gestionarClientes()
+## 2. gestionarCliente()
 
 **Responsabilidad**: Gestionar clientes de la empresa. Relaciona con: gestionarCarga(), gestionarRuta()
 
@@ -72,7 +72,35 @@ ClienteController api/v1/empresas/{id_emp}/clientes
 
 ---
 
-## 3. gestionarCarga()
+## 3. Empresa()
+
+**Responsabilidad**: Gestionar clientes de la empresa.
+
+### Model
+
+- Empresa (id_emp, nombre_emp, rut_emp, dv_emp, dir_emp)
+
+### Repository
+
+- EmpresaRepository CRUD
+
+### Service
+
+- EmpresaService (CRUD + obtenerClientesPorEmpresa)
+
+### Controller
+
+EmpresaController api/v1/empresas
+
+- GET /empresas: listar todas las empresas
+- GET /empresas/{id_emp}: obtener una empresa por ID
+- POST /empresas: crear empresa
+- PUT /empresas/{id_emp}: actualizar empresa
+- DELETE /empresas/{id_emp}: eliminar empresa
+
+---
+
+## 4. gestionarCarga()
 
 **Responsabilidad**: Administración de cargas y guías de despacho. Relaciona con: gestionarRuta(), Conductor
 
@@ -107,7 +135,7 @@ Nombre Controller: GuiaClienteController
 
 ---
 
-## 4. gestionarRuta()
+## 5. Ruta()
 
 **Responsabilidad**: Crear, asignar y calcular rutas. Relaciona con: gestionarCarga(), gestionarFlota()
 
@@ -136,36 +164,7 @@ RutaController api/v1/rutas
 
 ---
 
-## 5. gestionarFlota()
-
-**Responsabilidad**: Registro y asignación de vehículos, se relacion con: conductor y sistema
-
-### Model
-
-- Vehiculo (id, patente, estado, km_actual)
-- AsignacionVehiculo (id, id_conductor, id_vehiculo, fecha_asignacion)
-
-### Repository
-
-- VehiculoRepository, AsignacionVehiculoRepository
-
-### Service
-
-- VehiculoService (crear, editar, eliminar vehiculo)
-- AsignacionVehiculoService (crear, editar, eliminar asignacion)
-
-### Controller
-
-VehiculoController api/v1/vehiculos
-
-- POST /vehiculos
-- GET /vehiculos/{id}
-- PUT /vehiculos/{id}
-- DELETE /vehiculos/{id}
-
----
-
-## 6. iniciarViaje()
+## 6. gestionEntrada()
 
 **Responsabilidad**: Iniciar un viaje.
 
@@ -189,7 +188,7 @@ iniciarViajeController api/v1/viaje/iniciar/{id_conductor}
 
 ---
 
-## 7. terminarViaje()
+## 7. gestionSalida()
 
 **Responsabilidad**: Finalizar un viaje.
 
@@ -213,59 +212,59 @@ terminarViajeController api/v1/viaje/terminar/{id_conductor}
 
 ---
 
-## 8. cargaEntregada()
+## 8. gestionPago()
 
-**Responsabilidad**: Entrega de una carga.
-
-### Model
-
-- estadoCarga (id, estado, id_conductor, id_viaje)
-
-### Repository
-
-- estadoCargaRepository
-
-### Service
-
-- estadoCargaService (registrarEntrega(id_conductor, id_viaje))
-
-### Controller
-
-estadoCargaController api/v1/cargas/{id}/cargaentregada
-
-- POST /cargas/{id}/cargaentregada
-
----
-
-## 9. enviarNotificacion()
-
-**Responsabilidad**: Enviar notificaciones.
+**Responsabilidad**: Revision de pago
 
 ### Model
 
-- Notificacion (id_notificacion, hora_notificacion, mensaje_notificacion, id_usuario, estado_notificacion)
+- egestionPago
 
 ### Repository
 
-- NotificacionRepository
+- gestionPagoRepository
 
 ### Service
 
-- NotificacionService
-  - enviarNotificacion(id_usuario)
-  - estadoNotificacion(id_notificacion)
+- gestionPagoService
 
 ### Controller
 
-NotificacionController api/v1/notificaciones
+estadoCargaController api/v1/pago
 
-- POST /notificaciones
-- GET /notificaciones/{id_notificacion}
-- DELETE /notificaciones/{id_notificacion}
+- POST /pagos
+- GET /pagos
+- Get /pagos/{id}
+- Put /pagos/{id}
+- Delete /pagos/{id}
 
 ---
 
-## 10. crearReporte()
+## 9. AuthService()
+
+**Responsabilidad**: Validacion de rol ADmin.
+
+### Model
+
+- Authservice
+
+### Repository
+
+- AuthserviceRepository
+
+### Service
+
+- AuthserviceService
+
+### Controller
+
+- AuthserviceController /auth
+
+- POST /verificar-admin
+
+---
+
+## 10. reporteGeneral()
 
 **Responsabilidad**: Crear reportes.
 
