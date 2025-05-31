@@ -264,7 +264,34 @@ estadoCargaController api/v1/pago
 
 ---
 
-## 10. reporteGeneral()
+## 10. Vehiculo()
+
+**Responsabilidad**: Aisgnacion de vehiculos
+
+### Model
+
+- vehiculo{iid, patente, estado, km_actual}
+
+### Repository
+
+- vehiculoRepository{obtener, guardar,eliminar buscarporId, actualizar}
+
+### Service
+
+- Service {vehiculoRepository}
+
+### Controller
+
+VehiculoController api/v1/vehiculos
+
+- POST /vehiculos
+- GET /vehiculos
+- Put /vehiculos/{id}
+- Eliminar /vehiculos/{id}
+
+---
+
+## 11. reporteGeneral()
 
 **Responsabilidad**: Crear reportes.
 
