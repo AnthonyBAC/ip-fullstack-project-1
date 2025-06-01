@@ -1,8 +1,35 @@
 # Microservicios - Sistema de Gestión de Flota
 
+- Este documento presenta una arquitectura basada en microservicios para nuestro sistema Gestión de Flota, diseñado para facilitar la administración y escalabilidad de los distintos procesos operativos.
+
+- Cada microservicio está orientado a una responsabilidad única y específica, lo que permite una mayor organización y control del sistema. Este enfoque modular facilita la gestión y el control de clientes, vehículos, rutas, entradas y salidas de vehículos, usuarios y reportes.
+
+- A través de la división funcional en microservicios, se mejora el mantenimiento y se permite escalar de forma independiente cada componente, adaptándose a las necesidades del negocio con mayor flexibilidad.
+
+- A continuación, se presentan los microservicios implementados, junto con sus responsabilidades, modelos principales y el puerto asignado para cada uno. Estos puertos son únicos por servicio, lo que facilita la realización de pruebas organizadas e independientes mediante herramientas como Postman.
+
+- Cabe destacar que cada microservicio está conectado a una base de datos mediante Oracle, lo cual permite iniciar el proceso de pruebas de forma efectiva desde Postman.
+
+---
+
+## Puertos de Microservicios
+
+- microservicioVehiculo = 8080
+- microservicio-Ruta = 8081
+- microservicio-ReporteGeneral = 8082
+- microservicio-GestionUsuario = 8083
+- microservicio-GestionSalida = 8084
+- microservicio-GestionPago = 8085
+- microservicio-gestionEntrada = 8086
+- microservicio-GestionCarga = 8087
+- microservicio-Empresa = 8088
+- microservicio-clientes = 8089
+
+---
+
 ## 1. gestionUsuario()
 
-**Responsabilidad**: Administrar usuarios del sistema. Relaciona con: AUTH, gestionarClientes(), gestionarFlota()
+**Responsabilidad**: Administrar usuarios del sistema.
 
 ### Model
 
@@ -37,38 +64,25 @@ Nombre Controller: UsuarioController
 
 ### Model
 
-- Empresa (id_emp, nombre_emp, rut_emp, dv_emp, dir_emp)
 - Cliente (id_cli, nombre_cli, apellido_cli, run_cli, dv_cli, origen_cli, destino_cli, tel_cli)
 
 ### Repository
 
 - ClienteRepository CRUD
-- EmpresaRepository CRUD
 
 ### Service
 
-- EmpresaService (CRUD + obtenerClientesPorEmpresa)
 - ClienteService
 
 ### Controller
 
-EmpresaController api/v1/empresas
+ClienteController api/v1/clientes
 
-- GET /empresas: listar todas las empresas
-- GET /empresas/{id_emp}: obtener una empresa por ID
-- POST /empresas: crear empresa
-- PUT /empresas/{id_emp}: actualizar empresa
-- DELETE /empresas/{id_emp}: eliminar empresa
-
-ClienteController api/v1/empresas/{id_emp}/clientes
-
-(Clientes anidados bajo una empresa)
-
-- GET /empresas/{id_emp}/clientes: obtener todos los clientes de una empresa
-- GET /empresas/{id_emp}/clientes/{id_cli}: obtener cliente específico de esa empresa
-- POST /empresas/{id_emp}/clientes: crear cliente para una empresa
-- PUT /empresas/{id_emp}/clientes/{id_cli}: actualizar cliente
-- DELETE /empresas/{id_emp}/clientes/{id_cli}: eliminar cliente
+- GET /clientes: obtener todos los clientes
+- GET /clientes/{id_cli}: obtener cliente específico
+- POST /clientes: crear cliente
+- PUT /clientes/{id_cli}: actualizar cliente
+- DELETE /clientes/{id_cli}: eliminar cliente
 
 ---
 
@@ -90,13 +104,13 @@ ClienteController api/v1/empresas/{id_emp}/clientes
 
 ### Controller
 
-EmpresaController api/v1/empresas
+EmpresaController api/v1/empresa
 
-- GET /empresas: listar todas las empresas
-- GET /empresas/{id_emp}: obtener una empresa por ID
-- POST /empresas: crear empresa
-- PUT /empresas/{id_emp}: actualizar empresa
-- DELETE /empresas/{id_emp}: eliminar empresa
+- GET /empresa: listar todas las empresas
+- GET /empresa/{id_emp}: obtener una empresa por ID
+- POST /empresa: crear empresa
+- PUT /empresa/{id_emp}: actualizar empresa
+- DELETE /empresa/{id_emp}: eliminar empresa
 
 ---
 
@@ -121,33 +135,31 @@ EmpresaController api/v1/empresas
 
 ### Controller
 
-Nombre Controller: CargaController
+CargaController api/v1/carga
 
-- POST /cargas
-- GET /cargas/{id_carga}
-- PUT /cargas/{id_carga}
-- DELETE /cargas/{id_carga}
+- POST /carga
+- GET /carga/{id_carga}
+- PUT /carga/{id_carga}
+- DELETE /carga/{id_carga}
 
-Nombre Controller: GuiaClienteController
+GuiaClienteController api/v1/guiacliente
 
-- POST /guias-cliente
-- GET /guias-cliente/{id_guia}
+- POST /guiacliente
+- GET /guiacliente/{id_guia}
 
 ---
 
 ## 5. Ruta()
 
-**Responsabilidad**: Crear, asignar y calcular rutas. Relaciona con: gestionarCarga(), gestionarFlota()
+**Responsabilidad**: Crear, asignar y calcular rutas.
 
 ### Model
 
 - Ruta (origen, destino, distancia_km, tiempo_estimado)
-- Parada (id_ruta, ubicación, orden)
 
 ### Repository
 
 - RutaRepository
-- ParadaRepository
 
 ### Service
 
@@ -155,12 +167,12 @@ Nombre Controller: GuiaClienteController
 
 ### Controller
 
-RutaController api/v1/rutas
+RutaController api/v1/ruta
 
-- POST /rutas
-- GET /rutas/{id_ruta}
-- PUT /rutas/{id_ruta}
-- DELETE /rutas/{id_ruta}
+- POST /ruta
+- GET /ruta/{id_ruta}
+- PUT /ruta/{id_ruta}
+- DELETE /ruta/{id_ruta}
 
 ---
 
@@ -240,31 +252,7 @@ estadoCargaController api/v1/pago
 
 ---
 
-## 9. AuthService()
-
-**Responsabilidad**: Validacion de rol ADmin.
-
-### Model
-
-- Authservice
-
-### Repository
-
-- AuthserviceRepository
-
-### Service
-
-- AuthserviceService
-
-### Controller
-
-- AuthserviceController /auth
-
-- POST /verificar-admin
-
----
-
-## 10. Vehiculo()
+## 9. Vehiculo()
 
 **Responsabilidad**: Aisgnacion de vehiculos
 
@@ -291,7 +279,7 @@ VehiculoController api/v1/vehiculos
 
 ---
 
-## 11. reporteGeneral()
+## 10. reporteGeneral()
 
 **Responsabilidad**: Crear reportes.
 
