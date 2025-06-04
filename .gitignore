@@ -1,33 +1,42 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# Archivos y carpetas comunes a ignorar en todos los microservicios
 
-### STS ###
-.apt_generated
+# Build y compilados
+**/target/
+**/build/
+
+# Archivos temporales
+*.log
+*.tmp
+
+# Archivos de sistema de proyectos IDEs
 .classpath
-.factorypath
 .project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
+.factorypath
+.settings/
+.apt_generated/
+.springBeans/
+.sts4-cache/
+.idea/
 *.iws
 *.iml
 *.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
+.nb-gradle/
 .vscode/
+.DS_Store
+
+# NetBeans
+nbbuild/
+dist/
+nbdist/
+nbproject/private/
+
+# Maven wrapper
+.mvn/
+mvnw
+mvnw.cmd
+
+# Archivos sensibles por microservicio (como credenciales)
+**/application.properties
+
+# Ignorar archivos de ayuda
+HELP.md
