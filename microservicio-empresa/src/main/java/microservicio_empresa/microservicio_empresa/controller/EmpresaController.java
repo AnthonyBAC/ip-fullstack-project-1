@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/empresa")
 public class EmpresaController {
-    // Inyeccion de servicio para utilizar sus metodos
+    // Inyeccion
     @Autowired
     private EmpresaService empresa_service;
 
@@ -29,14 +29,8 @@ public class EmpresaController {
 
     // Busca empresa por id
     @GetMapping("/{id_emp}")
-    public Empresa buscarPorId(@PathVariable int id_emp) {
+    public Empresa buscarPorId(@PathVariable Long id_emp) {
         return empresa_service.buscarPorId(id_emp);
-    }
-
-    // Busca empresa por nombre
-    @GetMapping("/nombre/{nombre}")
-    public Empresa buscarEmpresaPorNombre(@PathVariable("nombre") String nombre) {
-        return empresa_service.buscarPorNombre(nombre);
     }
 
     // Guarda empresa, utilizando anotacion request body para mapear o buscar el
@@ -49,14 +43,14 @@ public class EmpresaController {
     // Elimina empresa, utilizando anotacion path variable para capturar el id y
     // pasarlo como parametro
     @DeleteMapping({ "/{id_emp}" })
-    public String elimarEmpresaPorId(@PathVariable int id_emp) {
+    public String elimarEmpresaPorId(@PathVariable Long id_emp) {
         return empresa_service.eliminarEmpresaPorId(id_emp);
     }
 
     // Actualiza empresa, utilizando anotacion path variable para buscar el id
     // y request body para mapear o buscar el objeto empresa
     @PutMapping("/{id_emp}")
-    public Empresa actualizarEmpresa(@PathVariable int id_emp, @RequestBody Empresa empresa) {
+    public Empresa actualizarEmpresa(@PathVariable Long id_emp, @RequestBody Empresa empresa) {
         return empresa_service.actualizarEmpresa(id_emp, empresa);
     }
 
