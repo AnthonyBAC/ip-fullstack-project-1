@@ -30,6 +30,12 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+	<dependency>
+    <groupId>org.mariadb.jdbc</groupId>
+    <artifactId>mariadb-java-client</artifactId>
+    <version>3.0.10</version> <!-- Puedes usar la última versión disponible -->
+</dependency>
+
 	<!-- oracle -->
 	<dependency>
 <groupId>com.oracle.database.jdbc</groupId>
