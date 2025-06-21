@@ -16,21 +16,19 @@ public class GuiaClienteService {
 
     // Metodo para obtener lista de guias
     public List<GuiaCliente> obtenerGuias() {
-        return guiaClienteRepository.obtenerGuias();
+        return guiaClienteRepository.findAll();
     }
 
     // Metodo para buscar guia por id
     public GuiaCliente buscarPorId(Long id) {
-        GuiaCliente guiaCliente = guiaClienteRepository.buscarPorId(id);
-        if (guiaCliente == null) {
-            throw new RuntimeException("Guia no encontrada");
-        }
+        GuiaCliente guiaCliente = guiaClienteRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Guia no encontrada"));
         return guiaCliente;
     }
 
     // Metodo para guardar guia
     public GuiaCliente guardarGuia(GuiaCliente guiaCliente) {
-        return guiaClienteRepository.guardar(guiaCliente);
+        return guiaClienteRepository.save(guiaCliente);
     }
 
 }

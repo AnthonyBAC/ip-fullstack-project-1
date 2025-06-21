@@ -44,18 +44,6 @@ public class RegistroEntradaController {
         return ResponseEntity.notFound().build();
     }
 
-    // Buscar por patente
-    @GetMapping("/patente/{patente}")
-    public List<VehiculoEntrada> buscarPorPatente(@PathVariable String patente) {
-        return service.buscarPorPatente(patente);
-    }
-
-    // Buscar por estado
-    @GetMapping("/estado/{estado}")
-    public List<VehiculoEntrada> buscarPorEstado(@PathVariable String estado) {
-        return service.buscarPorEstado(estado);
-    }
-
     // Contar total
     @GetMapping("/count")
     public long contarTotal() {
