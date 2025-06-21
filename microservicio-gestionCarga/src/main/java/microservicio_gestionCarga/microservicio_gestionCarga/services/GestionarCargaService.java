@@ -16,39 +16,38 @@ public class GestionarCargaService {
     // Metodo para obtener lista de cargas
     // Retorna lista de cargas
     public List<GestionarCarga> obtenerCargas() {
-        return gestionarCargaRepository.obtenerCargas();
+        return gestionarCargaRepository.findAll();
     }
 
     // Metodo para buscar carga por id
     // Retorna carga si se encuentra, sino lanza excepcion
     public GestionarCarga buscarPorId(Long id) {
-        GestionarCarga carga = gestionarCargaRepository.buscarPorId(id);
-        if (carga == null) {
-            throw new RuntimeException("Carga no encontrada");
-        }
+        GestionarCarga carga = gestionarCargaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Carga no encontrada"));
         return carga;
     }
 
     // Metodo para guardar carga
     // Retorna carga guardada
     public GestionarCarga guardar(GestionarCarga carga) {
-        return gestionarCargaRepository.guardar(carga);
+        return gestionarCargaRepository.save(carga);
     }
 
     // Metodo para eliminar carga por id
     // Retorna mensaje de confirmacion si se elimina, sino lanza excepcion
     public String eliminarPorId(Long id) {
-        boolean cargaid = gestionarCargaRepository.eliminarPorId(id);
+        boolean cargaid = gestionarCargaRepository.existsById(id);
         if (!cargaid) {
             throw new RuntimeException("No se encontró carga para eliminar");
         }
+        gestionarCargaRepository.deleteById(id);
         return "Carga eliminada exitosamente";
     }
 
     // Metodo para actualizar carga
     // Retorna carga actualizada
     public GestionarCarga actualizarPorId(GestionarCarga cargaActualizada) {
-        return gestionarCargaRepository.actualizarPorId(cargaActualizada);
+        return gestionarCargaRepository.save(cargaActualizada);
     }
 
 }

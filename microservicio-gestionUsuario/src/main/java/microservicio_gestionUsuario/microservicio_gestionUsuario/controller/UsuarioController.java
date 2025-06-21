@@ -30,11 +30,6 @@ public class UsuarioController {
         return usuario_service.buscarPorId(id_usuario);
     }
 
-    @GetMapping("/usuario/{nombre}")
-    public Usuario buscarUsuarioPorNombre(@PathVariable("nombre") String nombre) {
-        return usuario_service.buscarPorNombre(nombre);
-    }
-
     @PostMapping
     public Usuario guardarUsuario(@RequestBody Usuario usuario) {
         return usuario_service.guardarUsuario(usuario);

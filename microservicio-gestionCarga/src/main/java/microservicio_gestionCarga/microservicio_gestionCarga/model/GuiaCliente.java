@@ -15,24 +15,24 @@ public class GuiaCliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_guia;
-    private Cliente id_cliente;
+
     // private GestionarRuta id_ruta;
     private GestionarCarga id_carga;
 
-    public static class Cliente {
-        // Define clave primaria
-        // Se indica que esta id se generara de manera automatica de forma
-        // auto-incremental
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int idCli;
-        private String nombreCli;
-        private String apellidoCli;
-        private int runCli;
-        private String dvCli;
-        private int telCli;
-        private String origenCli;
-        private String destinoCli;
-    }
+    // public static class Cliente {
+    // // Define clave primaria
+    // // Se indica que esta id se generara de manera automatica de forma
+    // // auto-incremental
+    // @Id
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // private int idCli;
+    // private String nombreCli;
+    // private String apellidoCli;
+    // private int runCli;
+    // private String dvCli;
+    // private int telCli;
+    // private String origenCli;
+    // private String destinoCli;
+    // }
 
 }

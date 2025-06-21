@@ -14,22 +14,20 @@ public class VehiculoService {
 
     // Metodo para obtener lista de vehiculos
     public List<Vehiculo> obtenerVehiculos() {
-        return vehiculoRepository.obtenerVehiculos();
+        return vehiculoRepository.findAll();
     }
 
     // Metodo para buscar vehiculo por id
     // Retorna vehiculo si se encuentra, sino lanza excepcion
     public Vehiculo buscarPorId(Long id) {
-        Vehiculo vehiculo = vehiculoRepository.buscarPorId(id);
-        if (vehiculo == null) {
-            throw new RuntimeException("Vehiculo no encontrado");
-        }
+        Vehiculo vehiculo = vehiculoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Vehiculo no encontrado"));
         return vehiculo;
     }
 
     // Metodo para buscar vehiculo por patente
     public Vehiculo buscarPorPatente(String patente) {
-        Vehiculo vehiculo = vehiculoRepository.buscarPorPatente(patente);
+        Vehiculo vehiculo = vehiculoRepository.findByPatente(patente);
         if (vehiculo == null) {
             throw new RuntimeException("Vehiculo no encontrado");
         }
@@ -38,12 +36,12 @@ public class VehiculoService {
 
     // Metodo para guardar vehiculo
     public Vehiculo guardarVehiculo(Vehiculo vehiculo) {
-        return vehiculoRepository.guardar(vehiculo);
+        return vehiculoRepository.save(vehiculo);
     }
 
     // Metodo para eliminar vehiculo por id
     public String eliminarVehiculoPorId(Long id) {
-        boolean vehiculoid = vehiculoRepository.eliminarPorId(id);
+        boolean vehiculoid = vehiculoRepository.existsById(id);
         if (!vehiculoid) {
             throw new RuntimeException("No se encontró vehiculo para eliminar");
         }
@@ -52,6 +50,6 @@ public class VehiculoService {
 
     // Metodo para actualizar vehiculo
     public Vehiculo actualizarVehiculo(Vehiculo vehiculo) {
-        return vehiculoRepository.actualizarPorId(vehiculo);
+        return vehiculoRepository.save(vehiculo);
     }
 }

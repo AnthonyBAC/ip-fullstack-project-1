@@ -30,16 +30,6 @@ public class VehiculoEntradaService {
         return repository.findById(id);
     }
 
-    // Buscar por patente
-    public List<VehiculoEntrada> buscarPorPatente(String patente) {
-        return repository.findByPatente(patente);
-    }
-
-    // Buscar por estado
-    public List<VehiculoEntrada> buscarPorEstado(String estado) {
-        return repository.findByEstado(estado);
-    }
-
     // Contar total
     public long contarTotal() {
         return repository.count();

@@ -17,17 +17,17 @@ public class PagoService {
     // Metodo para obtener lista de pagos
     // Retorna lista de pagos
     public List<Pago> obtenerPagos() {
-        return pagoRepository.obtenerPagos();
+        return pagoRepository.findAll();
     }
 
     // Metodo para buscar pago por tipo
     public Pago buscarPorTipo(String tipo) {
-        return pagoRepository.buscarPorTipo(tipo);
+        return pagoRepository.findByTipo(tipo);
     }
 
     // Metodo para guardar pago
     // retorna pago guardado
     public Pago guardarPago(Pago pago) {
-        return pagoRepository.agregarPago(pago);
+        return pagoRepository.save(pago);
     }
 }

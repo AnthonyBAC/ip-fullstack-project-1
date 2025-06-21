@@ -17,23 +17,21 @@ public class RutaService {
     // Metodo para obtener lista de rutas
     // Retorna lista de rutas
     public List<Ruta> obtenerRutas() {
-        return rutaRepository.obtenerRutas();
+        return rutaRepository.findAll();
     }
 
     // Metodo para buscar ruta por id
     // Retorna ruta si se encuentra, sino lanza excepcion
     public Ruta buscarPorId(Long id) {
-        Ruta ruta = rutaRepository.buscarPorId(id);
-        if (ruta == null) {
-            throw new RuntimeException("Ruta no encontrada");
-        }
+        Ruta ruta = rutaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Ruta no encontrada"));
         return ruta;
     }
 
     // Metodo para buscar ruta por origen
     // Retorna ruta si se encuentra, sino lanza excepcion
     public Ruta buscarPorOrigen(String origen) {
-        Ruta ruta = rutaRepository.buscarPorOrigen(origen);
+        Ruta ruta = rutaRepository.findByOrigen(origen);
         if (ruta == null) {
             throw new RuntimeException("Ruta no encontrada");
         }
@@ -43,13 +41,13 @@ public class RutaService {
     // Metodo para guardar ruta
     // Retorna ruta guardada
     public Ruta guardarRuta(Ruta ruta) {
-        return rutaRepository.guardar(ruta);
+        return rutaRepository.save(ruta);
     }
 
     // Metodo para eliminar ruta por id
     // Retorna mensaje de confirmacion si se elimina, sino lanza excepcion
     public String eliminarRutaPorId(Long id) {
-        boolean rutaid = rutaRepository.eliminarPorId(id);
+        boolean rutaid = rutaRepository.existsById(id);
         if (!rutaid) {
             throw new RuntimeException("No se encontró ruta para eliminar");
         }
@@ -59,6 +57,6 @@ public class RutaService {
     // Metodo para actualizar ruta
     // Retorna ruta actualizada
     public Ruta actualizarRuta(Ruta ruta) {
-        return rutaRepository.actualizarPorId(ruta);
+        return rutaRepository.save(ruta);
     }
 }
