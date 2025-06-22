@@ -40,6 +40,18 @@ public class ReporteGeneralController {
         return ResponseEntity.notFound().build();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ReporteGeneralModel> actualizar(@PathVariable Long id,
+            @RequestBody ReporteGeneralModel reporte) {
+        Optional<ReporteGeneralModel> reporteExistente = services.buscarPorId(id);
+        if (reporteExistente.isPresent()) {
+            reporte.setIdVehiculo(id); // Asegurar que el ID del reporte coincida con el ID de la URL
+            ReporteGeneralModel reporteActualizado = services.actualizar(reporte);
+            return ResponseEntity.ok(reporteActualizado);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     @GetMapping("/patente/{patente}")
     public List<ReporteGeneralModel> buscarPorPatente(@PathVariable String patente) {
         return services.buscarPorPatente(patente);
