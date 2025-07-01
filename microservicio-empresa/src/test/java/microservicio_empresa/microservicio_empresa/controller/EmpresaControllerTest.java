@@ -45,8 +45,89 @@ public class EmpresaControllerTest {
         empresa.setDirEmp("Calle Francia, Wakanda");
     }
 
+    // Test para obtener todas las empresas
     @Test
-    public void TestGetAllEmpresas()throws Exception{
-        when(empresaService.)
+    public void testGetAllEmpresas() throws Exception {
+        when(empresaService.obtenerEmpresas()).thenReturn(List.of(empresa));
+
+        mockMvc.perform(get("/api/v1/empresa"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].idEmp").value(1L))
+                .andExpect(jsonPath("$[0].nombreEmp").value("Empresa 1"))
+                .andExpect(jsonPath("$[0].rutEmp").value(28965852))
+                .andExpect(jsonPath("$[0].dvEmp").value(2))
+                .andExpect(jsonPath("$[0].dirEmp").value("Calle Francia, Wakanda"));
+    }
+
+    // Test para obtener empresa por ID
+    @Test
+    public void testGetEmpresaById() throws Exception {
+        when(empresaService.buscarPorId(1L)).thenReturn((empresa));
+
+        mockMvc.perform(get("/api/v1/empresa/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.idEmp").value(1L))
+                .andExpect(jsonPath("$.nombreEmp").value("Empresa 1"))
+                .andExpect(jsonPath("$.rutEmp").value(28965852))
+                .andExpect(jsonPath("$.dvEmp").value(2))
+                .andExpect(jsonPath("$.dirEmp").value("Calle Francia, Wakanda"));
+
+    }
+
+    // Test para guardar una empresa
+    @Test
+    public void testSaveEmpresa() throws Exception {
+        when(empresaService.guardarEmpresa(any(Empresa.class))).thenReturn((empresa));
+
+        mockMvc.perform(post("/api/v1/empresa")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(empresa)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.idEmp").value(1L))
+                .andExpect(jsonPath("$.nombreEmp").value("Empresa 1"))
+                .andExpect(jsonPath("$.rutEmp").value(28965852))
+                .andExpect(jsonPath("$.dvEmp").value(2))
+                .andExpect(jsonPath("$.dirEmp").value("Calle Francia, Wakanda"));
+    }
+
+    // Test para actualizar una empresa POR ID
+    @Test
+    public void testUpdateEmpresa() throws Exception {
+        when(empresaService.actualizarEmpresa(eq(1L), (any(Empresa.class)))).thenReturn((empresa));
+
+        mockMvc.perform(put("/api/v1/empresa/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(empresa)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.idEmp").value(1L))
+                .andExpect(jsonPath("$.nombreEmp").value("Empresa 1"))
+                .andExpect(jsonPath("$.rutEmp").value(28965852))
+                .andExpect(jsonPath("$.dvEmp").value(2))
+                .andExpect(jsonPath("$.dirEmp").value("Calle Francia, Wakanda"));
+    }
+
+    // Test para eliminar por ID
+    @Test
+    public void testDeleteEmpresaById_Encontrada() throws Exception {
+        when(empresaService.eliminarEmpresaPorId(1L)).thenReturn("Empresa eliminada correctamente");
+
+        mockMvc.perform(delete("/api/v1/empresa/1"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Empresa eliminada correctamente"));
+
+        verify(empresaService, times(1)).eliminarEmpresaPorId(1L);
+    }
+
+    // Test para eliminar por ID pero no se encuentra el ID
+    @Test
+    public void testDeleteEmpresaById_NoEncontrada() throws Exception {
+        when(empresaService.actualizarEmpresa(eq(1L), any(Empresa.class)))
+                .thenThrow(new RuntimeException("Empresa no encontrada para actualizar."));
+
+        mockMvc.perform(put("/api/v1/empresa/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(empresa)))
+                .andExpect(status().isBadRequest()) // gracias al @ExceptionHandler
+                .andExpect(content().string("Empresa no encontrada para actualizar."));
     }
 }
