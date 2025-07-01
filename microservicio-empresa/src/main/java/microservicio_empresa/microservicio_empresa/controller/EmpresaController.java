@@ -6,6 +6,9 @@ import microservicio_empresa.microservicio_empresa.services.EmpresaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import io.swagger.v3.oas.annotations.Operation;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/empresa")
+@Tag(name = "Empresas", description = "Informacion respecto a las empresas")
 public class EmpresaController {
     // Inyeccion
     @Autowired
@@ -23,6 +27,7 @@ public class EmpresaController {
 
     // Obtiene lista de empresas
     @GetMapping
+    @Operation(summary = "Obtener todas las empresas", description = "Obtiene una lista de todas las empresas en la base de datos")
     public List<Empresa> obtenerEmpresas() {
         return empresa_service.obtenerEmpresas();
     }
