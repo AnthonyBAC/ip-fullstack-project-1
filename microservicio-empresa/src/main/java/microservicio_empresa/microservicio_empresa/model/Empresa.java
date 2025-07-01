@@ -22,6 +22,7 @@ public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEmp;
+
     private String nombreEmp;
     private int rutEmp;
     private int dvEmp;
