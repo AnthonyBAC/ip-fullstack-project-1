@@ -3,6 +3,7 @@ package microservicio_empresa.microservicio_empresa.controller;
 import microservicio_empresa.microservicio_empresa.model.Empresa;
 import microservicio_empresa.microservicio_empresa.services.EmpresaService;
 import microservicio_empresa.microservicio_empresa.assembler.EmpresaModelAssembler;
+import microservicio_empresa.microservicio_empresa.dto.EmpresaRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
@@ -46,7 +47,13 @@ public class EmpresaControllerV2 {
 
     // Guardar nueva empresa
     @PostMapping
-    public EntityModel<Empresa> guardarEmpresa(@RequestBody Empresa empresa) {
+    public EntityModel<Empresa> guardarEmpresa(@RequestBody EmpresaRequest empresaRequest) {
+        Empresa empresa = new Empresa();
+        empresa.setNombreEmp(empresaRequest.getNombreEmp());
+        empresa.setRutEmp(empresaRequest.getRutEmp());
+        empresa.setDvEmp(empresaRequest.getDvEmp());
+        empresa.setDirEmp(empresaRequest.getDirEmp());
+
         Empresa nueva = empresaService.guardarEmpresa(empresa);
         return assembler.toModel(nueva);
     }
